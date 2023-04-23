@@ -41,7 +41,7 @@ export class ShoppingCartService {
 
   updateCount = async (
     count: number,
-    partId: string,
+    partId: string | number,
   ): Promise<{ count: number }> => {
     await this.shoppingCartModel.update({ count }, { where: { partId } });
 
@@ -52,7 +52,7 @@ export class ShoppingCartService {
 
   updateTotalPrice = async (
     totalPrice: number,
-    partId: string,
+    partId: string | number,
   ): Promise<{ totalPrice: number }> => {
     await this.shoppingCartModel.update({ totalPrice }, { where: { partId } });
 
@@ -61,13 +61,13 @@ export class ShoppingCartService {
     return { totalPrice: part.total_price };
   };
 
-  remove = async (partId: string): Promise<void> => {
+  remove = async (partId: string | number): Promise<void> => {
     const part = await this.shoppingCartModel.findOne({ where: { partId } });
 
     await part.destroy();
   };
 
-  removeAll = async (userId: string): Promise<void> => {
+  removeAll = async (userId: string | number): Promise<void> => {
     await this.shoppingCartModel.destroy({ where: { userId } });
   };
 }

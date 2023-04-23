@@ -45,7 +45,7 @@ export class ShoppingCartController {
   @Patch('/count/:id')
   updateCount(
     @Body() { count }: { count: number },
-    @Param('id') partId: string,
+    @Param('id') partId: number,
   ) {
     return this.shoppingCartService.updateCount(count, partId);
   }
@@ -56,20 +56,20 @@ export class ShoppingCartController {
   @Patch('/total-price/:id')
   updateTotalPrice(
     @Body() { total_price }: { total_price: number },
-    @Param('id') partId: string,
+    @Param('id') partId: number,
   ) {
     return this.shoppingCartService.updateTotalPrice(total_price, partId);
   }
 
   @UseGuards(AuthenticatedGuard)
   @Delete('/one/:id')
-  removeOne(@Param('id') partId: string) {
+  removeOne(@Param('id') partId: number) {
     return this.shoppingCartService.remove(partId);
   }
 
   @UseGuards(AuthenticatedGuard)
   @Delete('/all/:id')
-  removeAll(@Param('id') userId: string) {
+  removeAll(@Param('id') userId: number) {
     return this.shoppingCartService.removeAll(userId);
   }
 }

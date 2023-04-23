@@ -6,7 +6,7 @@ export class ShoppingCart extends Model {
   userId: string;
 
   @Column
-  partId: string;
+  partId: number;
 
   @Column
   boiler_manufacturer: string;
