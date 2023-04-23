@@ -7,10 +7,9 @@ services:
     shm_size: '4gb'
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
+      MYSQL_USER: root
       MYSQL_PASSWORD: password
+      MYSQL_DATABASE: test
     volumes:
       - mariadb:/var/lib/mysql
     ports:
