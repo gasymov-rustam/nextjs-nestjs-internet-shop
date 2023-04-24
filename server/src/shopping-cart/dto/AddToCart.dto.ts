@@ -12,5 +12,10 @@ export class AddToCartDto {
 
   @ApiProperty({ example: '1', description: 'Part Id' })
   @IsNotEmpty({ message: 'Part Id should not be empty' })
-  readonly partId: string;
+  readonly partId: string | number;
+
+  constructor(username: string, partId: string | number) {
+    this.username = username;
+    this.partId = partId;
+  }
 }

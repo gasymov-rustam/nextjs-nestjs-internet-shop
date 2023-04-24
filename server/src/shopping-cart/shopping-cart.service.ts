@@ -51,14 +51,14 @@ export class ShoppingCartService {
   };
 
   updateTotalPrice = async (
-    totalPrice: number,
+    total_price: number,
     partId: string | number,
-  ): Promise<{ totalPrice: number }> => {
-    await this.shoppingCartModel.update({ totalPrice }, { where: { partId } });
+  ): Promise<{ total_price: number }> => {
+    await this.shoppingCartModel.update({ total_price }, { where: { partId } });
 
     const part = await this.shoppingCartModel.findOne({ where: { partId } });
 
-    return { totalPrice: part.total_price };
+    return { total_price: part.total_price };
   };
 
   remove = async (partId: string | number): Promise<void> => {
