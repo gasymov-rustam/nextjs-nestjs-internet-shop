@@ -1,0 +1,1 @@
+export { MarkerSvg } from './MarkerSvg';

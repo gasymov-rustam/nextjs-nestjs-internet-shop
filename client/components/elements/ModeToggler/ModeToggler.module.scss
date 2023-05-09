@@ -1,0 +1,19 @@
+.theme {
+  display: flex;
+  justify-content: flex-end;
+
+  .input {
+    appearance: none;
+    width: 62px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    outline: none;
+    background-color: #383838;
+    border: none;
+    cursor: pointer;
+    transition: background-color ease 0.3s;
+  }
+}

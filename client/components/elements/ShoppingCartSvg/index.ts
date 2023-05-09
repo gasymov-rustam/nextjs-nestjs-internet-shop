@@ -1,0 +1,1 @@
+export { ShoppingCartSvg } from './ShoppingCartSvg';

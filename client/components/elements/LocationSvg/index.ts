@@ -1,0 +1,1 @@
+export { LocationSvg } from './LocationSvg';

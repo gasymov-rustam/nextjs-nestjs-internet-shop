@@ -1,0 +1,1 @@
+export { ProfileSvg } from './ProfileSvg';

@@ -1,0 +1,1 @@
+export { MailSvg } from './MailSvg';

@@ -1,0 +1,1 @@
+export { BrandSliderArrowSvg } from './BrandSliderArrowSvg';

@@ -1,0 +1,1 @@
+export { CartHoverCheckedSvg } from './CartHoverCheckedSvg';

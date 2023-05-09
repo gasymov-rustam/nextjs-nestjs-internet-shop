@@ -1,0 +1,1 @@
+export { BrandsSliderNextArrow } from './BrandsSliderNextArrow';
