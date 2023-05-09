@@ -1,0 +1,31 @@
+@font-face {
+  font-display: swap;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/Raleway-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/Raleway-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  src: url(/fonts/Roboto-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/Roboto-Regular.woff) format('woff');
+}
