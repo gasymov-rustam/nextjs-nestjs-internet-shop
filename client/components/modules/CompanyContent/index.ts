@@ -1,0 +1,1 @@
+export { CompanyContent } from './CompanyContent';
