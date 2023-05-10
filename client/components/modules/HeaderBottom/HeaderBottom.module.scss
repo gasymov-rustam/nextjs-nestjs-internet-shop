@@ -1,0 +1,126 @@
+.dark_mode {
+  background-color: #2d2d2d;
+}
+
+.header {
+  &__bottom {
+    padding-top: 17px;
+    padding-bottom: 14px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    grid-column: 1 / 4;
+
+    @media (max-width: 770px) {
+      grid-column: 1 / 5;
+    }
+
+    @media (max-width: 580px) {
+      grid-column: auto;
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &__link {
+      position: absolute;
+      top: -17px;
+      left: 7px;
+      display: flex;
+      align-items: center;
+
+      @media (max-width: 580px) {
+        position: initial;
+        width: 176px;
+      }
+
+      & img {
+        margin-right: 9px;
+      }
+
+      &__text.dark_mode {
+        color: #fafbfc;
+      }
+
+      &__text {
+        max-width: 138px;
+        font-family: 'Raleway';
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        color: #4e4c4c;
+
+        @media (max-width: 580px) {
+          position: initial;
+          width: 176px;
+          color: #fafbfc;
+        }
+      }
+    }
+  }
+
+  &__search {
+    grid-column: 4 / 11;
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: 92% 5%;
+
+    @media (max-width: 770px) {
+      grid-column: 5 / 11;
+    }
+
+    @media (max-width: 580px) {
+      grid-column: 1 / 10;
+      padding-left: 0;
+    }
+
+    @media (max-width: 370px) {
+      grid-column: 1 / 9;
+    }
+
+    &__btn {
+      background-color: transparent;
+      border: 1px solid #9e9e9e;
+      border-left: none;
+      border-radius: 4px;
+      height: 40px;
+      width: 40px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      cursor: pointer;
+    }
+
+    &__span svg {
+      fill: #4e4c4c;
+    }
+
+    &__btn.dark_mode &__span svg {
+      fill: #f2f2f2;
+    }
+  }
+
+  &__shopping_cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-column: 11 / 13;
+    padding-left: 50px;
+
+    @media (max-width: 950px) {
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 1140px) {
+      padding-left: 20px;
+    }
+  }
+}
