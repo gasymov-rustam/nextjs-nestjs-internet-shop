@@ -6,3 +6,4 @@ export * from './CartPopup';
 export * from './HeaderBottom';
 export * from './HeaderTop';
 export * from './ProfileDropDown';
+export * from './Auth';
