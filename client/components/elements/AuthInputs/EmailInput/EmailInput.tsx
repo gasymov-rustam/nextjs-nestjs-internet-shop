@@ -1,12 +1,10 @@
-import { memo } from 'react';
-
 import { AuthInputProps } from '../AuthInputs.type';
 
 import cls from '../AuthInputs.module.scss';
 
-export const EmailInput = memo((props: AuthInputProps) => {
+export const EmailInput = (props: AuthInputProps) => {
   const { register, errors } = props;
-
+  console.log('🚀 => 👍 ==>> EmailInput ==>> Line #7 ==>> ', errors.email);
   return (
     <label className={cls.form}>
       <input
@@ -27,4 +25,4 @@ export const EmailInput = memo((props: AuthInputProps) => {
       )}
     </label>
   );
-});
+};

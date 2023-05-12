@@ -1,10 +1,8 @@
-import { memo } from 'react';
-
 import { AuthInputProps } from '../AuthInputs.type';
 
 import cls from '../AuthInputs.module.scss';
 
-export const PasswordInput = memo(({ register, errors }: AuthInputProps) => (
+export const PasswordInput = ({ register, errors }: AuthInputProps) => (
   <label className={cls.form}>
     <input
       {...register('password', {
@@ -26,4 +24,4 @@ export const PasswordInput = memo(({ register, errors }: AuthInputProps) => (
       <span className={cls.alert}>{errors.password?.message}</span>
     )}
   </label>
-));
+);

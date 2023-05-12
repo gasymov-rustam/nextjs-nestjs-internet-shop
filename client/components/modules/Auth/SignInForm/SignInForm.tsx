@@ -19,7 +19,9 @@ export const SignInForm = memo(() => {
     formState: { errors, isValid, isDirty },
     handleSubmit,
     reset,
-  } = useForm<IInputs>();
+  } = useForm<IInputs>({
+    mode: 'onBlur',
+  });
   // const mode = useStore($mode);
   const mode = 'dark';
   const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
@@ -42,6 +44,8 @@ export const SignInForm = memo(() => {
       setSpinner(false);
     }
   };
+
+  console.log('🚀 => 👍 ==>> SignInForm ==>> Line #46 ==>> ', errors);
 
   return (
     <form

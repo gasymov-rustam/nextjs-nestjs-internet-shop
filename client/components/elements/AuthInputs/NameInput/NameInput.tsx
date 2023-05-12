@@ -1,10 +1,8 @@
-import { memo } from 'react';
-
 import { AuthInputProps } from '../AuthInputs.type';
 
 import cls from '../AuthInputs.module.scss';
 
-export const NameInput = memo(({ register, errors }: AuthInputProps) => {
+export const NameInput = ({ register, errors }: AuthInputProps) => {
   return (
     <label className={cls.form}>
       <input
@@ -19,7 +17,8 @@ export const NameInput = memo(({ register, errors }: AuthInputProps) => {
             message: 'Should be less then 15 symbols!',
           },
           pattern: {
-            value: /^[а-яА-Яa-zA-ZёЁ]*$/,
+            // value: /^[а-яА-Яa-zA-ZёЁ]*$/,
+            value: /^[a-zA-Z0-9]*$/,
             message: 'Wrong value!',
           },
         })}
@@ -29,14 +28,6 @@ export const NameInput = memo(({ register, errors }: AuthInputProps) => {
       />
 
       {errors.name && <span className={cls.alert}>{errors.name?.message}</span>}
-      {/*
-    {errors.name && errors.name.type === 'minLength' && (
-      <span className={cls.alert}>Should be more then 2 symbols!</span>
-    )}
-
-    {errors.name && errors.name.type === 'maxLength' && (
-      <span className={cls.alert}>Should be less then 15 symbols!</span>
-    )} */}
     </label>
   );
-});
+};
