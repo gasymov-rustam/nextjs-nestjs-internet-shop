@@ -76,7 +76,7 @@ export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
                   onClick={handleLogout}
                 >
                   <span
-                    className={clsx(cls.profile__dropdown__item__text darkModeClass)}
+                    className={clsx(cls.profile__dropdown__item__text, darkModeClass)}
                   >
                     Log Out
                   </span>
