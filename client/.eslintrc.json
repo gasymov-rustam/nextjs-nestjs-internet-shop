@@ -33,7 +33,7 @@
     "space-after-keywords": "off",
     "keyword-spacing": [2, { "before": true, "after": true }],
     "react/jsx-indent": [2, 2, { "indentLogicalExpressions": true }],
-    "arrow-body-style": ["error", "as-needed"],
+    // "arrow-body-style": ["error", "as-needed"],
     "padded-blocks": ["error", "never"],
     "max-len": ["error", { "code": 120 }],
     "indent": ["error", 2],

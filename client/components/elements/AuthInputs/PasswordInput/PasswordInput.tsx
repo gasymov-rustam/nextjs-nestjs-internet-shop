@@ -9,8 +9,14 @@ export const PasswordInput = memo(({ register, errors }: AuthInputProps) => (
     <input
       {...register('password', {
         required: 'Password!',
-        minLength: 4,
-        maxLength: 20,
+        minLength: {
+          value: 4,
+          message: 'Should be more then 4 symbols!',
+        },
+        maxLength: {
+          value: 20,
+          message: 'Should be less then 20 symbols!',
+        },
       })}
       className={cls.input}
       type="password"
@@ -18,12 +24,6 @@ export const PasswordInput = memo(({ register, errors }: AuthInputProps) => (
     />
     {errors.password && (
       <span className={cls.alert}>{errors.password?.message}</span>
-    )}
-    {errors.password && errors.password.type === 'minLength' && (
-      <span className={cls.alert}>Should be more then 4 symbols!</span>
-    )}
-    {errors.password && errors.password.type === 'maxLength' && (
-      <span className={cls.alert}>Should be less then 20 symbols!</span>
     )}
   </label>
 ));

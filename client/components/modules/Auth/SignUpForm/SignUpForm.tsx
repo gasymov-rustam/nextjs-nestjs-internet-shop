@@ -1,12 +1,11 @@
-import { memo, useState } from 'react';
-import { useStore } from 'effector-react';
-import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
+import { memo, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { EmailInput, NameInput, PasswordInput } from '../../../elements';
+import { singUpFx } from '../../../../app';
 import { RequestsPath } from '../../../../constants';
 import { showAuthError } from '../../../../utils';
-import { singUpFx } from '../../../../app';
+import { EmailInput, NameInput, PasswordInput } from '../../../elements';
 
 import type { IInputs } from '../../../../types';
 
@@ -20,11 +19,12 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
   const [spinner, setSpinner] = useState(false);
   const {
     register,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     handleSubmit,
-    resetField,
     reset,
-  } = useForm<IInputs>();
+  } = useForm<IInputs>({
+    mode: 'onBlur',
+  });
   // const mode = useStore($mode);
   const mode = 'dark';
   const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
@@ -43,9 +43,6 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
         return;
       }
 
-      // resetField('email');
-      // resetField('name');
-      // resetField('password');
       reset();
       switchForm();
     } catch (error) {
@@ -75,8 +72,10 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
           cls.form__button,
           cls.button,
           cls.submit,
-          darkModeClass
+          darkModeClass,
+          { disabled: !isValid || !isDirty }
         )}
+        disabled={!isValid || !isDirty}
       >
         {spinner ? <div className={cls.spinner} /> : 'SIGN UP'}
       </button>

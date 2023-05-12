@@ -1,8 +1,7 @@
-import { memo, useState } from 'react';
-import { useStore } from 'effector-react';
-import { useRouter } from 'next/router';
-import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import { memo, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { singInFx } from '../../../../app';
 import { RequestsPath } from '../../../../constants';
@@ -17,9 +16,9 @@ export const SignInForm = memo(() => {
   const [spinner, setSpinner] = useState(false);
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
     handleSubmit,
-    resetField,
+    reset,
   } = useForm<IInputs>();
   // const mode = useStore($mode);
   const mode = 'dark';
@@ -35,8 +34,7 @@ export const SignInForm = memo(() => {
         password: data.password,
       });
 
-      resetField('name');
-      resetField('password');
+      reset();
       route.push('/dashboard');
     } catch (error) {
       showAuthError(error);
@@ -63,8 +61,10 @@ export const SignInForm = memo(() => {
           cls.form__button,
           cls.button,
           cls.submit,
-          darkModeClass
+          darkModeClass,
+          { disabled: !isValid || !isDirty }
         )}
+        disabled={!isValid || !isDirty}
       >
         {spinner ? <div className={cls.spinner} /> : 'SIGN IN'}
       </button>

@@ -1,6 +1,5 @@
-import { MutableRefObject, memo, useRef } from 'react';
-import { useStore } from 'effector-react';
 import clsx from 'clsx';
+import { MutableRefObject, memo, useRef } from 'react';
 
 import { useMediaQuery } from '../../../hooks';
 import { ModeToggler } from '../../elements';
