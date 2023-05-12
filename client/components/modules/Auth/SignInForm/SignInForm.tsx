@@ -45,8 +45,6 @@ export const SignInForm = memo(() => {
     }
   };
 
-  console.log('🚀 => 👍 ==>> SignInForm ==>> Line #46 ==>> ', errors);
-
   return (
     <form
       className={clsx(cls.form, darkModeClass)}

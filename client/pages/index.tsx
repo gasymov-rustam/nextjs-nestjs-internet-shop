@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { Auth as AuthPage } from '../components/templates';
 const Auth = () => {
-  console.log('🚀 => 👍 ==>> index ==>> Line #5 ==>> ');
   return (
     <>
       <Head>

@@ -1,14 +1,17 @@
+import { useStore } from 'effector-react';
 import { memo, useEffect } from 'react';
+
+import { $mode } from '../../../context/mode';
+import { useTheme } from '../../../hooks';
 
 import cls from './ModeToggler.module.scss';
 
 export const ModeToggler = memo(() => {
-  // const { toggleTheme } = useTheme()
-  // const mode = useStore($mode)
-  const mode = 'light';
+  const { toggleTheme } = useTheme();
+  const mode = useStore($mode);
 
   const handleToggleMode = () => {
-    // toggleTheme()
+    toggleTheme();
     document.body.classList.toggle('dark_mode');
   };
 

@@ -1,10 +1,11 @@
+import { AxiosError } from 'axios';
 import { createEffect } from 'effector-next';
 import { toast } from 'react-toastify';
-import { AxiosError } from 'axios';
 
-import { api } from '../axiosClient';
 import { HTTPStatus } from '../../constants';
-import type { ISignInFx, ISignUpFx } from '../../types';
+import { api } from '../axiosClient';
+
+import type { ISignInFx, ISignUpFx } from '../types';
 
 export const singUpFx = createEffect(
   async ({ url, username, password, email }: ISignUpFx) => {
