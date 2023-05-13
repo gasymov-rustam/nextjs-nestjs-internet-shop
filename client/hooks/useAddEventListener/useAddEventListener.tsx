@@ -3,7 +3,9 @@ import { useLatest } from '../useLatest';
 
 export const useAddEventListener = (
   type: keyof WindowEventMap,
-  cb: (event: Event) => void
+  cb: (event: Event) => void,
+  deps: unknown[] = [],
+  element?: Element | null
 ) => {
   const latestCb = useLatest(cb);
 
@@ -12,8 +14,9 @@ export const useAddEventListener = (
       latestCb.current(event);
     };
 
-    window.addEventListener(type, handler);
-    console.log('🚀 => 👍 ==>> useWindowEvent ==>> Line #16 ==>> ');
-    return () => window.removeEventListener(type, handler);
-  }, [type, latestCb]);
+    (element ?? window)?.addEventListener(type, handler);
+
+    return () => (element ?? window)?.removeEventListener(type, handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, latestCb, ...deps]);
 };

@@ -1,11 +1,17 @@
+import { attachReduxDevTools } from '@effector/redux-devtools-adapter';
 import { withHydrate } from 'effector-next';
+import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import type { AppProps } from 'next/app';
-
 import '@/styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
+
+attachReduxDevTools({
+  name: 'Boiler Details',
+  batch: true,
+  stateTab: true,
+});
 
 const enhance = withHydrate();
 

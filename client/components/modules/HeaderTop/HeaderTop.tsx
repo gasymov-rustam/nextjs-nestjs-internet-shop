@@ -3,15 +3,15 @@ import Link from 'next/link';
 import { memo } from 'react';
 
 import { Paths } from '../../../constants';
-import { useMediaQuery, useTheme } from '../../../hooks';
-import { CityButton, ModeToggler } from '../../elements';
+import { useMediaQuery, usePopup, useTheme } from '../../../hooks';
+import { BurgerMenu, CityButton, ModeToggler } from '../../elements';
 import { ProfileDropDown } from '../ProfileDropDown';
 
 import cls from './HeaderTop.module.scss';
 
 export const HeaderTop = memo(() => {
   const isMedia950 = useMediaQuery(950);
-  // const { toggleOpen, open, closePopup } = usePopup();
+  const { open, closePopup, toggleOpen } = usePopup();
   const { mode } = useTheme();
   const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
@@ -20,18 +20,7 @@ export const HeaderTop = memo(() => {
       <div className={clsx('container', cls.header__top__container)}>
         {!isMedia950 && <CityButton />}
 
-        {isMedia950 && (
-          <button
-            // onClick={toggleOpen}
-            className={clsx(cls.burger_menu, darkModeClass, {
-              [cls.open]: open,
-            })}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        )}
+        {isMedia950 && <BurgerMenu open={open} toggleOpen={toggleOpen} />}
 
         <nav
           className={clsx(cls.header__nav, darkModeClass, {
@@ -46,7 +35,7 @@ export const HeaderTop = memo(() => {
                     cls.header__nav__list__item__link,
                     darkModeClass
                   )}
-                  // onClick={closePopup}
+                  onClick={closePopup}
                 >
                   Orders and payment
                 </a>
@@ -60,7 +49,7 @@ export const HeaderTop = memo(() => {
                     cls.header__nav__list__item__link,
                     darkModeClass
                   )}
-                  // onClick={closePopup}
+                  onClick={closePopup}
                 >
                   About company
                 </a>
@@ -74,7 +63,7 @@ export const HeaderTop = memo(() => {
                     cls.header__nav__list__item__link,
                     darkModeClass
                   )}
-                  // onClick={closePopup}
+                  onClick={closePopup}
                 >
                   Catalog
                 </a>
@@ -88,7 +77,7 @@ export const HeaderTop = memo(() => {
                     cls.header__nav__list__item__link,
                     darkModeClass
                   )}
-                  // onClick={closePopup}
+                  onClick={closePopup}
                 >
                   Contacts
                 </a>
@@ -102,7 +91,7 @@ export const HeaderTop = memo(() => {
                     cls.header__nav__list__item__link,
                     darkModeClass
                   )}
-                  // onClick={closePopup}
+                  onClick={closePopup}
                 >
                   Wholesale byers
                 </a>

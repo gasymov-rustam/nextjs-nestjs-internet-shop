@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useStore } from 'effector-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { forwardRef, useCallback, useEffect } from 'react';
@@ -6,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import { withClickOutside } from '../../../HOCs';
 import { Paths } from '../../../constants';
+import { $shoppingCart } from '../../../context/shoppingCart';
 import { useTheme } from '../../../hooks';
 import { ShoppingCartSvg } from '../../elements';
 import { CartPopupItem } from '../CartPopupItem';
@@ -21,8 +23,7 @@ export const CartPopup = withClickOutside(
   forwardRef<HTMLDivElement, CartPopupProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
     // const user = undefined;
-    // const shoppingCart = useStore($shoppingCart);
-    const shoppingCart: unknown[] = [];
+    const shoppingCart = useStore($shoppingCart);
     const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
     const toggleCartDropDown = () => setOpen(!open);
