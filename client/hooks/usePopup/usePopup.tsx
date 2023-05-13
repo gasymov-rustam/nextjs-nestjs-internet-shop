@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { useAddEventListener } from '../useAddEventListener';
 
 export const usePopup = () => {
   const [open, setOpen] = useState(false);
@@ -18,13 +19,12 @@ export const usePopup = () => {
     setOpen(false);
   }, []);
 
-  useEffect(() => {
-    const overlay = document.querySelector('.overlay');
-
-    overlay?.addEventListener('click', closePopup);
-
-    return () => overlay?.removeEventListener('click', closePopup);
-  }, [closePopup, open]);
+  useAddEventListener({
+    type: 'click',
+    deps: [closePopup, open],
+    element: document.querySelector('.overlay'),
+    cb: closePopup,
+  });
 
   return { toggleOpen, open, closePopup };
 };

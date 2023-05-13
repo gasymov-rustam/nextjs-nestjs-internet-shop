@@ -17,7 +17,10 @@ export const Layout = ({ children }: LayoutProps) => (
       <link rel="icon" type="image/svg" sizes="32x32" href="/img/logo.svg" />
     </Head>
     <Header />
-    {children}
+    <main>
+      <div className="overlay" />
+      {children}
+    </main>
     <Footer />
   </>
 );

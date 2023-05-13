@@ -1,12 +1,19 @@
 import { useEffect } from 'react';
 import { useLatest } from '../useLatest';
 
-export const useAddEventListener = (
-  type: keyof WindowEventMap,
-  cb: (event: Event) => void,
-  deps: unknown[] = [],
-  element?: Element | null
-) => {
+interface UseAddEventListenerProps {
+  type: keyof WindowEventMap;
+  cb: (event: Event) => void;
+  deps?: unknown[];
+  element?: Element | null;
+}
+
+export const useAddEventListener = ({
+  type,
+  element,
+  deps = [],
+  cb,
+}: UseAddEventListenerProps) => {
   const latestCb = useLatest(cb);
 
   useEffect(() => {

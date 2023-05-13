@@ -21,10 +21,13 @@ export function withClickOutside(
     const [open, setOpen] = useState(false);
     const ref = useRef() as MutableRefObject<HTMLDivElement>;
 
-    useAddEventListener('mousedown', (e: Event) => {
-      if (!ref.current.contains(e.target as HTMLDivElement)) {
-        setOpen(false);
-      }
+    useAddEventListener({
+      type: 'mousedown',
+      cb: (e: Event) => {
+        if (!ref.current.contains(e.target as HTMLDivElement)) {
+          setOpen(false);
+        }
+      },
     });
 
     return <WrappedComponent open={open} setOpen={setOpen} ref={ref} />;
