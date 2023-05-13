@@ -97,10 +97,10 @@
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       cursor: pointer;
-    }
 
-    &__span svg {
-      fill: #4e4c4c;
+      &__span svg {
+        fill: #4e4c4c;
+      }
     }
 
     &__btn.dark_mode &__span svg {

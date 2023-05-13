@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
@@ -62,11 +63,15 @@ export const Footer = memo(() => {
               )}
             </div>
           </div>
+
           <div className={cls.footer__top__item}>
             <h3 className={cls.footer__top__item__title}>Contacts</h3>
 
             <ul
-              className={`${cls.footer__top__item__list} ${cls.footer__top__item__contacts}`}
+              className={clsx(
+                cls.footer__top__item__list,
+                cls.footer__top__item__contacts
+              )}
             >
               <li className={cls.footer__top__item__list__item}>
                 <Link href={Paths.CONTACTS} passHref legacyBehavior>

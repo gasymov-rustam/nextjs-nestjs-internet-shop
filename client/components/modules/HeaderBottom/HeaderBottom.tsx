@@ -6,6 +6,7 @@ import { memo } from 'react';
 import { Paths } from '../../../constants';
 import { useMediaQuery, useTheme } from '../../../hooks';
 import { ModeToggler, SearchInput, SearchSvg } from '../../elements';
+import { CartPopup } from '../CartPopup';
 
 import cls from './HeaderBottom.module.scss';
 
@@ -42,7 +43,7 @@ export const HeaderBottom = memo(() => {
 
         <div className={cls.header__shopping_cart}>
           {!isMedia950 && <ModeToggler />}
-          {/* <CartPopup /> */}
+          <CartPopup />
         </div>
       </div>
     </div>

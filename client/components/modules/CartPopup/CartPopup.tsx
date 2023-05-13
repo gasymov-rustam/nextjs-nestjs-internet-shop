@@ -1,8 +1,10 @@
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { forwardRef, useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
+import { withClickOutside } from '../../../HOCs';
 import { Paths } from '../../../constants';
 import { useTheme } from '../../../hooks';
 import { ShoppingCartSvg } from '../../elements';
@@ -15,8 +17,8 @@ interface CartPopupProps {
   setOpen: (arg: boolean) => void;
 }
 
-export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
-  ({ open, setOpen }, ref) => {
+export const CartPopup = withClickOutside(
+  forwardRef<HTMLDivElement, CartPopupProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
     // const user = undefined;
     // const shoppingCart = useStore($shoppingCart);
@@ -41,7 +43,7 @@ export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
     return (
       <div className={cls.cart} ref={ref}>
         <button
-          className={`${cls.cart__btn} ${darkModeClass}`}
+          className={clsx(cls.cart__btn, darkModeClass)}
           onClick={toggleCartDropDown}
         >
           {!!shoppingCart.length && (
@@ -60,7 +62,7 @@ export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
-              className={`${cls.cart__popup} ${darkModeClass}`}
+              className={clsx(cls.cart__popup, darkModeClass)}
               style={{ transformOrigin: 'right top' }}
             >
               <h3 className={cls.cart__popup__title}>Cart</h3>
@@ -73,7 +75,10 @@ export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
                 ) : (
                   <li className={cls.cart__popup__empty}>
                     <span
-                      className={`${cls.cart__popup__empty__text} ${darkModeClass}`}
+                      className={clsx(
+                        cls.cart__popup__empty__text,
+                        darkModeClass
+                      )}
                     >
                       Cart is empty
                     </span>
@@ -83,7 +88,10 @@ export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
               <div className={cls.cart__popup__footer}>
                 <div className={cls.cart__popup__footer__total}>
                   <span
-                    className={`${cls.cart__popup__footer__text} ${darkModeClass}`}
+                    className={clsx(
+                      cls.cart__popup__footer__text,
+                      darkModeClass
+                    )}
                   >
                     Total price:
                   </span>
@@ -105,5 +113,5 @@ export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
         </AnimatePresence>
       </div>
     );
-  }
+  })
 );

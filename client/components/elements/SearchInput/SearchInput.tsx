@@ -19,6 +19,7 @@ export const SearchInput = memo(() => {
   const handleSearchOptionChange = (selectedOption: SelectOptionType) => {
     setSearchOption(selectedOption);
   };
+
   return (
     <Select
       placeholder="I am looking for..."
