@@ -20,7 +20,7 @@ export const HeaderBottom = memo(() => {
         <h1 className={cls.header__logo}>
           <Link href={Paths.DASHBOARD} legacyBehavior passHref>
             <a className={cls.header__logo__link}>
-              <Image src="/img/logo.svg" alt="logo" />
+              <Image src="/img/logo.svg" alt="logo" width={30} height={30} />
 
               <span
                 className={clsx(darkModeClass, cls.header__logo__link__text)}

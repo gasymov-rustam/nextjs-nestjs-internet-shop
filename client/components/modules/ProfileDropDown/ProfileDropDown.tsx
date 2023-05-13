@@ -7,16 +7,17 @@ import { logoutFx } from '../../../app';
 import { Paths, RequestsPath } from '../../../constants';
 import { useTheme } from '../../../hooks';
 import { LogoutSvg, ProfileSvg } from '../../elements';
+import { withClickOutside } from '../../../HOCs';
 
 import cls from './ProfileDropDown.module.scss';
 
 interface ProfileDropDownProps {
   open: boolean;
-  setOpen: (arg0: boolean) => void;
+  setOpen: (arg: boolean) => void;
 }
 
-export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
-  ({ open, setOpen }, ref) => {
+export const ProfileDropDown = withClickOutside(
+  forwardRef<HTMLDivElement, ProfileDropDownProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
     // const user = undefined;
     const router = useRouter();
@@ -93,5 +94,5 @@ export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
         </AnimatePresence>
       </div>
     );
-  }
+  })
 );

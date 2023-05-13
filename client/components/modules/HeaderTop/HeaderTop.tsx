@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { Paths } from '../../../constants';
 import { useMediaQuery, useTheme } from '../../../hooks';
 import { CityButton, ModeToggler } from '../../elements';
+import { ProfileDropDown } from '../ProfileDropDown';
 
 import cls from './HeaderTop.module.scss';
 
@@ -122,7 +123,7 @@ export const HeaderTop = memo(() => {
           </ul>
         </nav>
 
-        {/* <ProfileDropdown /> */}
+        <ProfileDropDown />
       </div>
     </div>
   );

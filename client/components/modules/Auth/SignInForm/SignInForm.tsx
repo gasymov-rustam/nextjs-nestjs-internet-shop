@@ -4,7 +4,7 @@ import { memo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { singInFx } from '../../../../app';
-import { RequestsPath } from '../../../../constants';
+import { Paths, RequestsPath } from '../../../../constants';
 import { useTheme } from '../../../../hooks';
 import { showAuthError } from '../../../../utils';
 import { NameInput, PasswordInput } from '../../../elements';
@@ -37,7 +37,7 @@ export const SignInForm = memo(() => {
       });
 
       reset();
-      route.push('/dashboard');
+      route.push(Paths.DASHBOARD);
     } catch (error) {
       showAuthError(error);
     } finally {

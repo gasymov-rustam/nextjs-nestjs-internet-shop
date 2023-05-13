@@ -10,7 +10,7 @@ export const FooterLogo = memo(() => (
   <div className={cls.footer}>
     <Link href={Paths.DASHBOARD} passHref legacyBehavior>
       <a className={cls.footer__logo}>
-        <Image src="/img/logo-footer.svg" alt="logo" />
+        <Image src="/img/logo-footer.svg" alt="logo" width={30} height={30} />
 
         <span className={cls.footer__logo__text}>Details for gas boilers</span>
       </a>

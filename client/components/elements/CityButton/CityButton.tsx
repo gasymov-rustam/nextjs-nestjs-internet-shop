@@ -15,6 +15,7 @@ export const CityButton = memo(() => {
       <span className={clsx(cls.span, darkModeClass)}>
         <LocationSvg />
       </span>
+
       <span className={clsx(cls.text, darkModeClass)}>Tel Aviv</span>
     </button>
   );

@@ -118,19 +118,39 @@ export const Footer = memo(() => {
 
               <ul className={cls.footer__bottom__block__pay}>
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image src="/img/pay.png" alt="apple-pay" />
+                  <Image
+                    src="/img/pay.png"
+                    alt="apple-pay"
+                    width={30}
+                    height={30}
+                  />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <img src="/img/gpay.png" alt="google-pay" />
+                  <Image
+                    src="/img/gpay.png"
+                    alt="google-pay"
+                    width={30}
+                    height={30}
+                  />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image src="/img/master-card.png" alt="master-card" />
+                  <Image
+                    src="/img/master-card.png"
+                    alt="master-card"
+                    width={30}
+                    height={30}
+                  />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image src="/img/visa.png" alt="visa" />
+                  <Image
+                    src="/img/visa.png"
+                    alt="visa"
+                    width={30}
+                    height={30}
+                  />
                 </li>
               </ul>
             </div>
