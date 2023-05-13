@@ -31,7 +31,7 @@ export const CartAlert = memo(({ count, closeAlert }: CartAlertProps) => {
         <span>
           In cart {count} {showCountMessage(`${count}`)}
         </span>
-        <span>Sum: {formatPrice(0)} P</span>
+        <span>Sum: {formatPrice(0)} dollars</span>
       </div>
 
       <div className={cls.dashboard__alert__right}>
