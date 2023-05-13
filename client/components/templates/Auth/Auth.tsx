@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { MutableRefObject, memo, useRef } from 'react';
 
-import { useMediaQuery } from '../../../hooks';
+import { useMediaQuery, useTheme } from '../../../hooks';
 import { ModeToggler } from '../../elements';
 import { SignInForm, SignUpForm } from '../../modules';
 
@@ -16,9 +16,8 @@ export const Auth = memo(() => {
   const switchCircle2 = useRef() as MutableRefObject<HTMLDivElement>;
   const aContainer = useRef() as MutableRefObject<HTMLDivElement>;
   const bContainer = useRef() as MutableRefObject<HTMLDivElement>;
-  // const mode = useStore($mode);
-  const mode = 'dark';
-  const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
   const switchForm = () => {
     switchCtn.current.classList.add(cls.is_gx);

@@ -18,16 +18,18 @@ export const useTheme = () => {
   useEffect(() => {
     const value = localStorage.getItem('mode');
 
-    if (typeof value === 'string') {
+    if (value && typeof value === 'string') {
       const localTheme = JSON.parse(value);
 
       if (localTheme) {
         setMode(localTheme);
-      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setMode('dark');
+        localStorage.setItem('mode', JSON.stringify(localTheme));
       }
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setMode('dark');
+      localStorage.setItem('mode', JSON.stringify('dark'));
     }
   }, []);
 
-  return { toggleTheme };
+  return { mode, toggleTheme };
 };

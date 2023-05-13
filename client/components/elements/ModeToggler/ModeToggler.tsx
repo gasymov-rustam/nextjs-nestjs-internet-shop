@@ -1,14 +1,11 @@
-import { useStore } from 'effector-react';
 import { memo, useEffect } from 'react';
 
-import { $mode } from '../../../context/mode';
 import { useTheme } from '../../../hooks';
 
 import cls from './ModeToggler.module.scss';
 
 export const ModeToggler = memo(() => {
-  const { toggleTheme } = useTheme();
-  const mode = useStore($mode);
+  const { mode, toggleTheme } = useTheme();
 
   const handleToggleMode = () => {
     toggleTheme();

@@ -1,6 +1,6 @@
-import { memo } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { memo } from 'react';
 
 import { Paths } from '../../../constants';
 import { useMediaQuery } from '../../../hooks';
@@ -174,7 +174,7 @@ export const Footer = memo(() => {
 
           <div className={cls.footer__bottom__block}>
             <p className={cls.footer__bottom__block__copyright}>
-              © «Детали для газовых котлов» 2023.
+              © «Details for gas boilers» 2023.
             </p>
           </div>
         </div>

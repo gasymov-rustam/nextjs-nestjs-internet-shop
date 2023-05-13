@@ -1,20 +1,18 @@
-import { memo } from 'react';
-import { useStore } from 'effector-react';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { memo } from 'react';
 
-import { useMediaQuery } from '../../../hooks';
-import { CityButton, ModeToggler } from '../../elements';
 import { Paths } from '../../../constants';
+import { useMediaQuery, useTheme } from '../../../hooks';
+import { CityButton, ModeToggler } from '../../elements';
 
 import cls from './HeaderTop.module.scss';
 
 export const HeaderTop = memo(() => {
   const isMedia950 = useMediaQuery(950);
   // const { toggleOpen, open, closePopup } = usePopup();
-  // const mode = useStore($mode);
-  const mode = 'light';
-  const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
   return (
     <div className={cls.header__top}>

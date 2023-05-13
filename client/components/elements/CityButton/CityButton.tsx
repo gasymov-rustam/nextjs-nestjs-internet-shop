@@ -1,21 +1,21 @@
+import clsx from 'clsx';
 import { memo } from 'react';
-// import { useStore } from 'effector-react';
 
+import { useTheme } from '../../../hooks';
 import { LocationSvg } from '../LocationSvg';
 
 import cls from './CityButton.module.scss';
 
 export const CityButton = memo(() => {
-  // const mode = useStore($mode);
-  // const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
-  const darkModeClass = false;
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
   return (
     <button className={cls.city}>
-      <span className={`${cls.span} ${darkModeClass}`}>
+      <span className={clsx(cls.span, darkModeClass)}>
         <LocationSvg />
       </span>
-      <span className={`${cls.text} ${darkModeClass}`}>Moscow</span>
+      <span className={clsx(cls.text, darkModeClass)}>Tel Aviv</span>
     </button>
   );
 });

@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
-import { useRouter } from 'next/router';
-import { useStore } from 'effector-react';
-import { AnimatePresence, motion } from 'framer-motion';
 import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { forwardRef } from 'react';
 
 import { logoutFx } from '../../../app';
 import { Paths, RequestsPath } from '../../../constants';
+import { useTheme } from '../../../hooks';
 import { LogoutSvg, ProfileSvg } from '../../elements';
 
 import cls from './ProfileDropDown.module.scss';
@@ -17,12 +17,10 @@ interface ProfileDropDownProps {
 
 export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
   ({ open, setOpen }, ref) => {
-    // const mode = useStore($mode);
-    const mode = 'dark';
-    // const user = useStore($user);
-    const user = undefined;
+    const { mode } = useTheme();
+    // const user = undefined;
     const router = useRouter();
-    const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+    const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
     const toggleProfileDropDown = () => setOpen(!open);
 
@@ -60,10 +58,7 @@ export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
                 </span>
 
                 <span
-                  className={clsx(
-                    cls.profile__dropdown__email,
-                    darkModeClass
-                  )}
+                  className={clsx(cls.profile__dropdown__email, darkModeClass)}
                 >
                   {/* {user.email} */}
                   email
@@ -76,12 +71,18 @@ export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
                   onClick={handleLogout}
                 >
                   <span
-                    className={clsx(cls.profile__dropdown__item__text, darkModeClass)}
+                    className={clsx(
+                      cls.profile__dropdown__item__text,
+                      darkModeClass
+                    )}
                   >
                     Log Out
                   </span>
                   <span
-                    className={clsx(cls.profile__dropdown__item__svg, darkModeClass)}
+                    className={clsx(
+                      cls.profile__dropdown__item__svg,
+                      darkModeClass
+                    )}
                   >
                     <LogoutSvg />
                   </span>
@@ -89,7 +90,6 @@ export const ProfileDropDown = forwardRef<HTMLDivElement, ProfileDropDownProps>(
               </li>
             </motion.ul>
           )}
-
         </AnimatePresence>
       </div>
     );

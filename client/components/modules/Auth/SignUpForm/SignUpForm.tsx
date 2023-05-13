@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { singUpFx } from '../../../../app';
 import { RequestsPath } from '../../../../constants';
+import { useTheme } from '../../../../hooks';
 import { showAuthError } from '../../../../utils';
 import { EmailInput, NameInput, PasswordInput } from '../../../elements';
 
@@ -25,9 +26,8 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
   } = useForm<IInputs>({
     mode: 'onBlur',
   });
-  // const mode = useStore($mode);
-  const mode = 'dark';
-  const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
   const onSubmit = async (data: IInputs) => {
     try {

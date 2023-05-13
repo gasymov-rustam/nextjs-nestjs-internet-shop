@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { singInFx } from '../../../../app';
 import { RequestsPath } from '../../../../constants';
+import { useTheme } from '../../../../hooks';
 import { showAuthError } from '../../../../utils';
 import { NameInput, PasswordInput } from '../../../elements';
 
@@ -22,9 +23,8 @@ export const SignInForm = memo(() => {
   } = useForm<IInputs>({
     mode: 'onBlur',
   });
-  // const mode = useStore($mode);
-  const mode = 'dark';
-  const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
   const route = useRouter();
 
   const onSubmit = async (data: IInputs) => {

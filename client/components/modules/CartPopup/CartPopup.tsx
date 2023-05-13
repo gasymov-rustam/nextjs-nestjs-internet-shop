@@ -1,13 +1,12 @@
-import { forwardRef, useCallback, useEffect } from 'react';
-import { useStore } from 'effector-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { toast } from 'react-toastify';
 import Link from 'next/link';
+import { forwardRef, useCallback, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-import { getCartItemsFx } from '../../../app';
+import { Paths } from '../../../constants';
+import { useTheme } from '../../../hooks';
 import { ShoppingCartSvg } from '../../elements';
 import { CartPopupItem } from '../CartPopupItem';
-import { Paths } from '../../../constants';
 
 import cls from './CartPopup.module.scss';
 
@@ -18,13 +17,11 @@ interface CartPopupProps {
 
 export const CartPopup = forwardRef<HTMLDivElement, CartPopupProps>(
   ({ open, setOpen }, ref) => {
-    // const mode = useStore($mode);
-    const mode = 'dark';
-    // const user = useStore($user);
-    const user = undefined;
+    const { mode } = useTheme();
+    // const user = undefined;
     // const shoppingCart = useStore($shoppingCart);
     const shoppingCart: unknown[] = [];
-    const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
+    const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
     const toggleCartDropDown = () => setOpen(!open);
 

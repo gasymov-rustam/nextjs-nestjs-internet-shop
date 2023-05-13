@@ -1,6 +1,6 @@
-import { memo } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { memo } from 'react';
 
 import { Paths } from '../../../constants';
 
@@ -12,9 +12,7 @@ export const FooterLogo = memo(() => (
       <a className={cls.footer__logo}>
         <Image src="/img/logo-footer.svg" alt="logo" />
 
-        <span className={cls.footer__logo__text}>
-          Детали для газовых котлов
-        </span>
+        <span className={cls.footer__logo__text}>Details for gas boilers</span>
       </a>
     </Link>
   </div>

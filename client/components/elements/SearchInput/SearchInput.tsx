@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 import Select from 'react-select';
 
+import { useTheme } from '../../../hooks';
 import { SelectOptionType } from './SearchInput.type';
 import { mockArray } from './SearchInput.utils';
 
@@ -12,8 +13,7 @@ import {
 } from './SearchInput.style';
 
 export const SearchInput = memo(() => {
-  // const mode = useStore($mode);
-  const mode = 'light';
+  const { mode } = useTheme();
   const [searchOption, setSearchOption] = useState<SelectOptionType>(null);
 
   const handleSearchOptionChange = (selectedOption: SelectOptionType) => {
@@ -21,7 +21,7 @@ export const SearchInput = memo(() => {
   };
   return (
     <Select
-      placeholder="Я ищу..."
+      placeholder="I am looking for..."
       value={searchOption}
       onChange={handleSearchOptionChange}
       styles={{

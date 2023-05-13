@@ -1,27 +1,26 @@
-import { memo, useState } from 'react';
-import { useStore } from 'effector-react';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
+import { memo, useState } from 'react';
 
-import { DeleteSvg } from '../../elements';
+import { Paths } from '../../../constants';
+import { useTheme } from '../../../hooks';
 import { formatPrice, removeItemFromCart } from '../../../utils';
+import { DeleteSvg } from '../../elements';
 
 import type { IShoppingCartItem } from '../../../types';
 
 import cls from './CartPopupItem.module.scss';
-import { Paths } from '../../../constants';
 
 interface CartPopupItemProps {
   item: IShoppingCartItem;
 }
 
 export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
-  // const mode = useStore($mode);
-  const mode = 'light';
-  const darkModeClass = mode === 'dark' ? `${cls.dark_mode}` : '';
-  const spinnerDarkModeClass = mode === 'dark' ? `${cls.cart__dark_mode}` : '';
   const [spinner, setPinner] = useState(false);
+  const { mode } = useTheme();
+  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const spinnerDarkModeClass = mode === 'dark' ? cls.cart__dark_mode : '';
 
   const deleteCartItem = () => removeItemFromCart(item.partId, setPinner);
 
