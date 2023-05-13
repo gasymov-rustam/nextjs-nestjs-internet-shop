@@ -3,11 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { forwardRef } from 'react';
 
+import { useStore } from 'effector-react';
+import { withClickOutside } from '../../../HOCs';
 import { logoutFx } from '../../../app';
-import { Paths, RequestsPath } from '../../../constants';
+import { RequestsPath } from '../../../constants';
+import { $user } from '../../../context/user';
 import { useTheme } from '../../../hooks';
 import { LogoutSvg, ProfileSvg } from '../../elements';
-import { withClickOutside } from '../../../HOCs';
 
 import cls from './ProfileDropDown.module.scss';
 
@@ -19,7 +21,7 @@ interface ProfileDropDownProps {
 export const ProfileDropDown = withClickOutside(
   forwardRef<HTMLDivElement, ProfileDropDownProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
-    // const user = undefined;
+    const user = useStore($user);
     const router = useRouter();
     const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
 
@@ -27,8 +29,10 @@ export const ProfileDropDown = withClickOutside(
 
     const handleLogout = async () => {
       await logoutFx(RequestsPath.LOGOUT);
-      router.push(Paths.HOME);
+      router.push('/');
     };
+
+    if (!user) return null;
 
     return (
       <div className={cls.profile} ref={ref}>
@@ -54,15 +58,13 @@ export const ProfileDropDown = withClickOutside(
                     darkModeClass
                   )}
                 >
-                  {/* {user.username} */}
-                  hhhhhhhh
+                  {user?.username || ''}
                 </span>
 
                 <span
                   className={clsx(cls.profile__dropdown__email, darkModeClass)}
                 >
-                  {/* {user.email} */}
-                  email
+                  {user?.email || ''}
                 </span>
               </li>
 
