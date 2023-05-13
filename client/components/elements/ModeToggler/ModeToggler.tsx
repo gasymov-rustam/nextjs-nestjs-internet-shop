@@ -22,7 +22,7 @@ export const ModeToggler = memo(() => {
   return (
     <div className={cls.theme}>
       <input
-        className={cls.input}
+        className={cls.theme__input}
         type="checkbox"
         checked={mode === 'light'}
         onChange={handleToggleMode}
