@@ -34,7 +34,7 @@ export const HeaderTop = memo(() => {
         )}
 
         <nav
-          className={clsx(cls.burger_menu, darkModeClass, {
+          className={clsx(cls.header__nav, darkModeClass, {
             [cls.open]: open,
           })}
         >
