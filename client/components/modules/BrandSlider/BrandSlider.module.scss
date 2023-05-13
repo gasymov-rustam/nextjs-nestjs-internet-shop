@@ -1,0 +1,48 @@
+.dashboard {
+  &__brands {
+    margin-bottom: 48px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 468px) {
+      margin-bottom: 64px;
+    }
+
+    &__slide {
+      height: 68px;
+      display: flex !important;
+      align-items: center !important;
+      max-height: 68px;
+      border-radius: 4px;
+      overflow: hidden;
+      user-select: none;
+      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 12px;
+
+      @media (max-width: 800px) {
+        height: 48px;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      &.dark_mode {
+        background-color: #2d2d2d;
+      }
+    }
+
+    &__slider {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 80px;
+
+      @media (max-width: 800px) {
+        height: 60px;
+      }
+    }
+  }
+}

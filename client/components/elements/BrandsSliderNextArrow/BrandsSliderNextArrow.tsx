@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { memo } from 'react';
 import { CustomArrowProps } from 'react-slick';
-import clsx from 'clsx';
 
 import { BrandSliderArrowSvg } from '../BrandSliderArrowSvg';
 
@@ -13,7 +13,7 @@ interface BrandsSliderNextArrowProps extends CustomArrowProps {
 export const BrandsSliderNextArrow = memo(
   ({ modeClass, onClick }: BrandsSliderNextArrowProps) => (
     <button
-      className={clsx(cls.brand, cls.arrow_next, modeClass)}
+      className={clsx(cls.brand, cls.brand__arrow_next, modeClass)}
       onClick={onClick}
     >
       <span>

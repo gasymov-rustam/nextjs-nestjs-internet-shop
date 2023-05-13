@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 
@@ -21,7 +20,7 @@ export const HeaderBottom = memo(() => {
         <h1 className={cls.header__logo}>
           <Link href={Paths.DASHBOARD} legacyBehavior passHref>
             <a className={cls.header__logo__link}>
-              <Image src="/img/logo.svg" alt="logo" width={30} height={30} />
+              <img src="/img/logo.svg" alt="logo" />
 
               <span
                 className={clsx(darkModeClass, cls.header__logo__link__text)}

@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
 
@@ -123,39 +122,19 @@ export const Footer = memo(() => {
 
               <ul className={cls.footer__bottom__block__pay}>
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image
-                    src="/img/pay.png"
-                    alt="apple-pay"
-                    width={30}
-                    height={30}
-                  />
+                  <img src="/img/pay.png" alt="apple-pay" />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image
-                    src="/img/gpay.png"
-                    alt="google-pay"
-                    width={30}
-                    height={30}
-                  />
+                  <img src="/img/gpay.png" alt="google-pay" />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image
-                    src="/img/master-card.png"
-                    alt="master-card"
-                    width={30}
-                    height={30}
-                  />
+                  <img src="/img/master-card.png" alt="master-card" />
                 </li>
 
                 <li className={cls.footer__bottom__block__pay__item}>
-                  <Image
-                    src="/img/visa.png"
-                    alt="visa"
-                    width={30}
-                    height={30}
-                  />
+                  <img src="/img/visa.png" alt="visa" />
                 </li>
               </ul>
             </div>

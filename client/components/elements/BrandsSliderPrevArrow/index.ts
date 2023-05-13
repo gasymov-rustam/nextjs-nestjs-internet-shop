@@ -1,0 +1,1 @@
+export { BrandsSliderPrevArrow } from './BrandsSliderPrevArrow';

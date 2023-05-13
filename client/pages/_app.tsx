@@ -6,6 +6,8 @@ import { ToastContainer } from 'react-toastify';
 
 import '@/styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
 attachReduxDevTools({
   name: 'Boiler Details',

@@ -1,8 +1,9 @@
-export type { IAddToCartFx, IShoppingCartItem } from './shoppingCart';
 export type {
   IAuthPageInput,
   IInputs,
   ISignInFx,
   ISignUpFx,
   IUser,
-} from './auth';
+} from './Auth';
+export type { IBoilerPart, IBoilerParts } from './BoilerParts';
+export type { IAddToCartFx, IShoppingCartItem } from './ShoppingCart';

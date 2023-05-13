@@ -1,0 +1,1 @@
+export { BrandSlider } from './BrandSlider';

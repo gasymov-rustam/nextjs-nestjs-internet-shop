@@ -4,4 +4,6 @@ export const RequestsPath = {
   LOGOUT: '/users/logout',
   LOGIN: '/users/login',
   REGISTER: '/users/signup',
+  BOILER_PARTS_NEW: '/boiler-parts/new',
+  BOILER_PARTS_BESTSELLERS: '/boiler-parts/bestsellers',
 };

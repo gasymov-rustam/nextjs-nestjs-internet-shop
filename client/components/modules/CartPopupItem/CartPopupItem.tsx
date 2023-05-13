@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import Image from 'next/image';
 import Link from 'next/link';
 import { memo, useState } from 'react';
 
@@ -28,7 +27,7 @@ export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
     <li className={cls.cart__item}>
       <div className={cls.cart__item__top}>
         <div className={cls.cart__item__img}>
-          <Image src={item.image} alt={item.name} />
+          <img src={item.image} alt={item.name} />
         </div>
 
         <Link href={`${Paths.CATALOG}/${item.partId}`} passHref legacyBehavior>
