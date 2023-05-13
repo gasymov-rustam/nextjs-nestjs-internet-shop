@@ -15,7 +15,7 @@ export const OnlineStoreContent = memo(() => (
 
     <li className={cls.footer__item}>
       <Link href={Paths.SHIPPING_PAYMENT} passHref legacyBehavior>
-        <a className={cls.footer__item__link}>Доставка и оплата</a>
+        <a className={cls.footer__item__link}>Shipping and Payment</a>
       </Link>
     </li>
   </ul>
