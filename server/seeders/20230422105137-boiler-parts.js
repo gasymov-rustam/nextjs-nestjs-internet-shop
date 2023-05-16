@@ -43,7 +43,7 @@ module.exports = {
         name: faker.lorem.sentence(2),
         description: faker.lorem.sentence(10),
         images: JSON.stringify(
-          [...Array(7)].map(
+          [...Array(3)].map(
             () =>
               `${faker.image.technics()}?random=${faker.random.numeric(30)}`,
           ),
