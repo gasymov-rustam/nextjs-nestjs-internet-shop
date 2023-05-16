@@ -27,7 +27,7 @@ export const DashBoard = memo(() => {
   const [showAlert, setShowAlert] = useState(!!shoppingCart.length);
   const { mode } = useTheme();
 
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   const closeAlert = () => setShowAlert(false);
 

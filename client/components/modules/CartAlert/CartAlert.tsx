@@ -15,7 +15,7 @@ interface CartAlertProps {
 
 export const CartAlert = memo(({ count, closeAlert }: CartAlertProps) => {
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   const showCountMessage = (count: string) => {
     if (count.endsWith('1')) {

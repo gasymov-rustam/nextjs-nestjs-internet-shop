@@ -22,7 +22,7 @@ interface DashBoardSliderProps {
 export const DashBoardSlider = memo((props: DashBoardSliderProps) => {
   const { items, spinner, goToPartPage } = props;
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
   const isMedia768 = useMediaQuery(768);
   const isMedia1366 = useMediaQuery(1366);
   const isMedia800 = useMediaQuery(800);
@@ -45,7 +45,7 @@ export const DashBoardSlider = memo((props: DashBoardSliderProps) => {
   };
 
   if (spinner) {
-    return <Skeleton count={4} width={width} mode={mode} />;
+    return <Skeleton count={4} width={width} />;
   }
 
   return (

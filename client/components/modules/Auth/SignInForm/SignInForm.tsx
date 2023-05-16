@@ -24,7 +24,7 @@ export const SignInForm = memo(() => {
     mode: 'onBlur',
   });
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
   const route = useRouter();
 
   const onSubmit = async (data: IInputs) => {
@@ -68,7 +68,7 @@ export const SignInForm = memo(() => {
         )}
         disabled={!isValid || !isDirty}
       >
-        {spinner ? <div className={cls.spinner} /> : 'SIGN IN'}
+        {spinner ? <div className="spinner" /> : 'SIGN IN'}
       </button>
     </form>
   );

@@ -17,7 +17,7 @@ export const Auth = memo(() => {
   const aContainer = useRef() as MutableRefObject<HTMLDivElement>;
   const bContainer = useRef() as MutableRefObject<HTMLDivElement>;
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   const switchForm = () => {
     switchCtn.current.classList.add(cls.is_gx);

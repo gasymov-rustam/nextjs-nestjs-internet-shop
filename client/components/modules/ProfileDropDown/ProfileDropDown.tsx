@@ -23,7 +23,7 @@ export const ProfileDropDown = withClickOutside(
     const { mode } = useTheme();
     const user = useStore($user);
     const router = useRouter();
-    const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+    const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
     const toggleProfileDropDown = () => setOpen(!open);
 

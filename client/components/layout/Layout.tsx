@@ -4,9 +4,14 @@ import { Footer, Header } from '../templates';
 interface LayoutProps {
   children: React.ReactNode;
   title?: string;
+  shouldBeOverlay?: boolean;
 }
 
-export const Layout = ({ title, children }: LayoutProps) => (
+export const Layout = ({
+  children,
+  title,
+  shouldBeOverlay = false,
+}: LayoutProps) => (
   <>
     <Head>
       <title>Aqua Termiks {title}</title>
@@ -17,7 +22,7 @@ export const Layout = ({ title, children }: LayoutProps) => (
     </Head>
     <Header />
     <main>
-      <div className="overlay" />
+      {shouldBeOverlay && <div className="overlay" />}
       {children}
     </main>
     <Footer />

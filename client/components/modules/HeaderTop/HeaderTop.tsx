@@ -13,7 +13,7 @@ export const HeaderTop = memo(() => {
   const isMedia950 = useMediaQuery(950);
   const { open, closePopup, toggleOpen } = usePopup();
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   return (
     <div className={cls.header__top}>

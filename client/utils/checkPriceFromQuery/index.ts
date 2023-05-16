@@ -1,0 +1,1 @@
+export { checkPriceFromQuery } from './checkPriceFromQuery';

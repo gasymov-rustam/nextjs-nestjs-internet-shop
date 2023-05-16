@@ -27,7 +27,7 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
     mode: 'onBlur',
   });
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   const onSubmit = async (data: IInputs) => {
     try {
@@ -77,7 +77,7 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
         )}
         disabled={!isValid || !isDirty}
       >
-        {spinner ? <div className={cls.spinner} /> : 'SIGN UP'}
+        {spinner ? <div className="spinner" /> : 'SIGN UP'}
       </button>
     </form>
   );

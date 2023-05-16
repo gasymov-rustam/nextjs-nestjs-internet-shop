@@ -18,7 +18,7 @@ interface CartPopupItemProps {
 export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
   const [spinner, setPinner] = useState(false);
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
   const spinnerDarkModeClass = mode === 'dark' ? cls.cart__dark_mode : '';
 
   const deleteCartItem = () => removeItemFromCart(item.partId, setPinner);
@@ -43,7 +43,7 @@ export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
           <span>
             {spinner ? (
               <span
-                className={clsx(cls.spinner, spinnerDarkModeClass)}
+                className={clsx('spinner', spinnerDarkModeClass)}
                 style={{ top: 0, left: 0, width: 20, height: 20 }}
               />
             ) : (

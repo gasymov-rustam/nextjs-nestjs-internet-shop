@@ -8,7 +8,7 @@ import cls from './CityButton.module.scss';
 
 export const CityButton = memo(() => {
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   return (
     <button className={cls.city}>

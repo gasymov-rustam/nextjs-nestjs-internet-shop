@@ -1,0 +1,1 @@
+export { ManufacturersBlockItem } from './ManufacturersBlockItem';

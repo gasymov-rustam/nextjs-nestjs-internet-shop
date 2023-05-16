@@ -11,7 +11,7 @@ import cls from './BrandSlider.module.scss';
 export const BrandSlider = memo(() => {
   const { mode } = useTheme();
   const isMedia768 = useMediaQuery(768);
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   useEffect(() => {
     const slider = document.querySelector(`.${cls.dashboard__brands__slider}`);

@@ -12,7 +12,7 @@ interface BurgerMenuProps {
 
 export const BurgerMenu = memo(({ open, toggleOpen }: BurgerMenuProps) => {
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   return (
     <button

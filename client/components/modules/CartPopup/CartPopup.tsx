@@ -24,7 +24,7 @@ export const CartPopup = withClickOutside(
     const { mode } = useTheme();
     // const user = undefined;
     const shoppingCart = useStore($shoppingCart);
-    const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+    const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
     const toggleCartDropDown = () => setOpen(!open);
 

@@ -9,7 +9,7 @@ const Dashboard = memo(() => {
   return (
     <>
       {shouldLoadContent && (
-        <Layout title="Main">
+        <Layout title="Main" shouldBeOverlay>
           <DashBoard />
         </Layout>
       )}

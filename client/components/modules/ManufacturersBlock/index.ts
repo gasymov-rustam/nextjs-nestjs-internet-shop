@@ -1,0 +1,1 @@
+export { ManufacturersBlock } from './ManufacturersBlock';

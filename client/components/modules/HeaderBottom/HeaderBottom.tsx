@@ -12,7 +12,7 @@ import cls from './HeaderBottom.module.scss';
 export const HeaderBottom = memo(() => {
   const isMedia950 = useMediaQuery(950);
   const { mode } = useTheme();
-  const darkModeClass = mode === 'dark' ? cls.dark_mode : '';
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   return (
     <div className={cls.header__bottom}>

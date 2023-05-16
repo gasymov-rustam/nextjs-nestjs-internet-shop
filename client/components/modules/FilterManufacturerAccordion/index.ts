@@ -1,0 +1,1 @@
+export { FilterManufacturerAccordion } from './FilterManufacturerAccordion';
