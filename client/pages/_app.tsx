@@ -28,7 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
-      <NextProgress />
+      <NextProgress options={{ showSpinner: false }} />
       <Component {...pageProps} />
       <ToastContainer
         position="bottom-right"
