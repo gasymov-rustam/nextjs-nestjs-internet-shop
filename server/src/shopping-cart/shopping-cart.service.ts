@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { ShoppingCart } from './ShoppingCart.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { BoilerPartsService } from '../boiler-parts/boiler-parts.service';
 import { UsersService } from '../users/users.service';
+import { ShoppingCart } from './ShoppingCart.model';
 import { AddToCartDto } from './dto/AddToCart.dto';
 
 @Injectable()

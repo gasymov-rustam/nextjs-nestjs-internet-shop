@@ -34,7 +34,7 @@ export const CartPopup = withClickOutside(
       if (!user) return;
 
       try {
-        const cartItems = await getCartItemsFx(`${RequestsPath.BOILER_PARTS}/${user.userId}`);
+        const cartItems = await getCartItemsFx(`${RequestsPath.SHOPPING_CART}/${user.userId}`);
         setShoppingCart(cartItems);
       } catch (error) {
         toast.error((error as Error).message);
