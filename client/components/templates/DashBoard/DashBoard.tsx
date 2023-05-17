@@ -54,6 +54,15 @@ export const DashBoard = memo(() => {
     loadBoilerParts();
   }, []);
 
+  useEffect(() => {
+    if (shoppingCart.length) {
+      setShowAlert(true);
+      return;
+    }
+
+    setShowAlert(false);
+  }, [shoppingCart.length]);
+
   return (
     <section className={cls.dashboard}>
       <div className={clsx('container', cls.dashboard__container)}>
@@ -65,7 +74,13 @@ export const DashBoard = memo(() => {
               exit={{ opacity: 0 }}
               className={clsx(cls.dashboard__alert, darkModeClass)}
             >
-              <CartAlert count={shoppingCart.length} closeAlert={closeAlert} />
+              <CartAlert
+                count={shoppingCart.reduce(
+                  (defaultCount, item) => defaultCount + item.count,
+                  0
+                )}
+                closeAlert={closeAlert}
+              />
             </motion.div>
           )}
         </AnimatePresence>

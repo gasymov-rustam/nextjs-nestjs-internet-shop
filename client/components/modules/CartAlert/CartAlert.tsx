@@ -2,7 +2,9 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { memo } from 'react';
 
+import { useStore } from 'effector-react';
 import { Paths } from '../../../constants';
+import { $totalPrice } from '../../../context/shoppingCart';
 import { useTheme } from '../../../hooks';
 import { formatPrice } from '../../../utils';
 
@@ -16,6 +18,7 @@ interface CartAlertProps {
 export const CartAlert = memo(({ count, closeAlert }: CartAlertProps) => {
   const { mode } = useTheme();
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
+  const totalPrice = useStore($totalPrice);
 
   const showCountMessage = (count: string) => {
     if (count.endsWith('1')) {
@@ -31,7 +34,7 @@ export const CartAlert = memo(({ count, closeAlert }: CartAlertProps) => {
         <span>
           In cart {count} {showCountMessage(`${count}`)}
         </span>
-        <span>Sum: {formatPrice(0)} dollars</span>
+        <span>Sum: {formatPrice(totalPrice)} $</span>
       </div>
 
       <div className={cls.dashboard__alert__right}>
