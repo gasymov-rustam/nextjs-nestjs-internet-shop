@@ -9,6 +9,7 @@ export * from './CartHoverSvg';
 export * from './CartItemCounter';
 export * from './CityButton';
 export * from './DeleteSvg';
+export * from './Error';
 export * from './FilterSvg';
 export * from './LocationSvg';
 export * from './LogoutSvg';

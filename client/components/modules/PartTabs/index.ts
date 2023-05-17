@@ -1,0 +1,1 @@
+export { PartTabs } from './PartTabs';

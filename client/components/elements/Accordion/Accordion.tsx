@@ -1,5 +1,5 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import { memo, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface AccordionProps {
   children: React.ReactNode;
@@ -8,6 +8,7 @@ interface AccordionProps {
   arrowOpenClass?: string;
   isMobileForFilters?: boolean;
   hideArrowClass?: string;
+  callback?: (expanded: boolean) => void;
 }
 
 export const Accordion = memo((props: AccordionProps) => {
@@ -16,13 +17,20 @@ export const Accordion = memo((props: AccordionProps) => {
     title,
     titleClass,
     arrowOpenClass,
-    hideArrowClass,
     isMobileForFilters,
+    hideArrowClass,
+    callback,
   } = props;
 
   const [expanded, setExpanded] = useState(false);
 
-  const toggleAccordion = () => setExpanded(!expanded);
+  const toggleAccordion = () => {
+    if (callback) {
+      callback(expanded);
+    }
+
+    setExpanded((prev) => !prev);
+  };
 
   return (
     <>

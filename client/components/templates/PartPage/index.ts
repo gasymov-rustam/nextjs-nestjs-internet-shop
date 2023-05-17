@@ -1,0 +1,1 @@
+export { PartPage } from './PartPage';

@@ -10,5 +10,6 @@ export const RequestsPath = {
   BOILER_PARTS: '/boiler-parts',
   BOILER_PARTS_NEW: '/boiler-parts/new',
   BOILER_PARTS_BESTSELLERS: '/boiler-parts/bestsellers',
+  BOILER_PARTS_FIND: '/boiler-parts/find',
   LOGIN_CHECK: '/users/login-check',
 };

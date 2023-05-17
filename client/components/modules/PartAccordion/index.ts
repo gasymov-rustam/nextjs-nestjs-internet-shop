@@ -1,0 +1,1 @@
+export { PartAccordion } from './PartAccordion';
