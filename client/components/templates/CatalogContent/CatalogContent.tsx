@@ -302,7 +302,7 @@ export const CatalogContent = memo(({ query }: CatalogContentProps) => {
             />
 
             {spinner ? (
-              <Skeleton count={20} />
+              <Skeleton count={8} />
             ) : (
               <ul className={cls.catalog__list}>
                 {boilerParts.rows?.length ? (

@@ -1,7 +1,9 @@
 .skeleton {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
   overflow: hidden;
+  flex-wrap: wrap;
 
   @media (max-width: 1330px) {
     grid-template-columns: repeat(3, 1fr);
@@ -22,6 +24,7 @@
   }
 
   .skeleton__item {
+    min-width: 250px;
     background-color: #ebebeb;
     overflow: hidden !important;
     padding: 0;
