@@ -14,7 +14,7 @@ import type { CatalogFiltersDesktopProps } from '../../../types';
 
 import cls from '@/components/templates/CatalogContent/CatalogContent.module.scss';
 import clsx from 'clsx';
-import { Accordion } from '../../elements';
+import { Accordion, Spinner } from '../../elements';
 import { FilterManufacturerAccordion } from '../FilterManufacturerAccordion';
 import { PriceRange } from '../PriceRange';
 
@@ -81,7 +81,7 @@ export const CatalogFiltersDesktop = memo(
             onClick={applyFilters}
           >
             {spinner ? (
-              <span className="spinner" style={{ top: 6, left: '47%' }} />
+              <Spinner mode={mode} style={{ top: 6, left: '47%' }} />
             ) : (
               'Show'
             )}

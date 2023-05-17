@@ -10,3 +10,4 @@ export * from './showAuthError';
 export * from './toggleCartItem';
 export * from './updateParamsAndFilters';
 export * from './updateParamsAndFiltersFromQuery';
+export * from './updateTotalPrice';

@@ -6,7 +6,12 @@ import { singUpFx } from '../../../../app';
 import { RequestsPath } from '../../../../constants';
 import { useTheme } from '../../../../hooks';
 import { showAuthError } from '../../../../utils';
-import { EmailInput, NameInput, PasswordInput } from '../../../elements';
+import {
+  EmailInput,
+  NameInput,
+  PasswordInput,
+  Spinner,
+} from '../../../elements';
 
 import type { IInputs } from '../../../../types';
 
@@ -77,7 +82,7 @@ export const SignUpForm = memo(({ switchForm }: SignUpFormProps) => {
         )}
         disabled={!isValid || !isDirty}
       >
-        {spinner ? <div className="spinner" /> : 'SIGN UP'}
+        {spinner ? <Spinner mode={mode} /> : 'SIGN UP'}
       </button>
     </form>
   );

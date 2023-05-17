@@ -6,15 +6,21 @@ import { forwardRef, useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { withClickOutside } from '../../../HOCs';
+import { getCartItemsFx } from '../../../app';
 import { Paths, RequestsPath } from '../../../constants';
-import { $shoppingCart, setShoppingCart } from '../../../context/shoppingCart';
+import {
+  $shoppingCart,
+  $totalPrice,
+  setShoppingCart,
+  setTotalPrice,
+} from '../../../context/shoppingCart';
+import { $user } from '../../../context/user';
 import { useTheme } from '../../../hooks';
+import { formatPrice } from '../../../utils';
 import { ShoppingCartSvg } from '../../elements';
 import { CartPopupItem } from '../CartPopupItem';
 
-import { getCartItemsFx } from '../../../app';
 import cls from './CartPopup.module.scss';
-import { $user } from '../../../context/user';
 
 interface CartPopupProps {
   open: boolean;
@@ -25,6 +31,7 @@ export const CartPopup = withClickOutside(
   forwardRef<HTMLDivElement, CartPopupProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
     const user = useStore($user);
+    const totalPrice = useStore($totalPrice);
     const shoppingCart = useStore($shoppingCart);
     const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
@@ -34,7 +41,9 @@ export const CartPopup = withClickOutside(
       if (!user) return;
 
       try {
-        const cartItems = await getCartItemsFx(`${RequestsPath.SHOPPING_CART}/${user.userId}`);
+        const cartItems = await getCartItemsFx(
+          `${RequestsPath.SHOPPING_CART}/${user.userId}`
+        );
         setShoppingCart(cartItems);
       } catch (error) {
         toast.error((error as Error).message);
@@ -44,6 +53,15 @@ export const CartPopup = withClickOutside(
     useEffect(() => {
       loadCartItems();
     }, [loadCartItems]);
+
+    useEffect(() => {
+      setTotalPrice(
+        shoppingCart.reduce(
+          (defaultCount, item) => defaultCount + item.total_price,
+          0
+        )
+      );
+    }, [shoppingCart]);
 
     return (
       <div className={cls.cart} ref={ref}>
@@ -101,7 +119,9 @@ export const CartPopup = withClickOutside(
                     Total price:
                   </span>
 
-                  <span className={cls.cart__popup__footer__price}>0</span>
+                  <span className={cls.cart__popup__footer__price}>
+                    {formatPrice(totalPrice)} $
+                  </span>
                 </div>
 
                 <Link href={Paths.ORDER} passHref legacyBehavior>

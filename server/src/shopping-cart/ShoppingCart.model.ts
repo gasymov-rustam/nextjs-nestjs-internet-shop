@@ -26,7 +26,7 @@ export class ShoppingCart extends Model {
   @Column({ defaultValue: 0 })
   in_stock: number;
 
-  @Column({ defaultValue: 0 })
+  @Column({ defaultValue: 1 })
   count: number;
 
   @Column({ defaultValue: 0 })

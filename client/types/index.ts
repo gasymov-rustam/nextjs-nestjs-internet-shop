@@ -19,4 +19,8 @@ export type {
   ManufacturersBlockProps,
   PriceRangeProps,
 } from './Catalog';
-export type { IAddToCartFx, IShoppingCartItem } from './ShoppingCart';
+export type {
+  IAddToCartFx,
+  IShoppingCartItem,
+  IUpdateCartItemFx,
+} from './ShoppingCart';

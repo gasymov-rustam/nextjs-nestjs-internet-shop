@@ -8,7 +8,7 @@ import { $shoppingCart } from '../../../context/shoppingCart';
 import { $user } from '../../../context/user';
 import { useTheme } from '../../../hooks';
 import { formatPrice, toggleCartItem } from '../../../utils';
-import { CartHoverCheckedSvg, CartHoverSvg } from '../../elements';
+import { CartHoverCheckedSvg, CartHoverSvg, Spinner } from '../../elements';
 
 import type { IBoilerPart } from '../../../types';
 
@@ -54,7 +54,7 @@ export const CatalogItem = memo(({ item }: { item: IBoilerPart }) => {
         onClick={toggleToCart}
       >
         {spinner ? (
-          <div className="spinner" style={{ top: 6, left: 6 }} />
+          <Spinner mode={mode} style={{ top: 6, left: 6 }} />
         ) : (
           <span>{isInCart ? <CartHoverCheckedSvg /> : <CartHoverSvg />}</span>
         )}

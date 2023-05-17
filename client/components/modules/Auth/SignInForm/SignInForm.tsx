@@ -7,7 +7,7 @@ import { singInFx } from '../../../../app';
 import { Paths, RequestsPath } from '../../../../constants';
 import { useTheme } from '../../../../hooks';
 import { showAuthError } from '../../../../utils';
-import { NameInput, PasswordInput } from '../../../elements';
+import { NameInput, PasswordInput, Spinner } from '../../../elements';
 
 import type { IInputs } from '../../../../types';
 
@@ -68,7 +68,7 @@ export const SignInForm = memo(() => {
         )}
         disabled={!isValid || !isDirty}
       >
-        {spinner ? <div className="spinner" /> : 'SIGN IN'}
+        {spinner ? <Spinner mode={mode} /> : 'SIGN IN'}
       </button>
     </form>
   );

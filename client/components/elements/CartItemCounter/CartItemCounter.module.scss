@@ -1,0 +1,43 @@
+.counter {
+  position: relative;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 88px;
+  height: 29px;
+  border: 1px solid #66b1f1;
+  border-radius: 4px;
+
+  button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+    svg {
+      stroke: black;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  span {
+    font-size: 14px;
+    color: #4e4c4c;
+  }
+
+  &.dark_mode button svg {
+    stroke: white;
+  }
+
+  &.dark_mode span {
+    color: #f2f2f2;
+  }
+}

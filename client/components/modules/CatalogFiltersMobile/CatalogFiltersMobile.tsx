@@ -12,7 +12,7 @@ import {
 } from '../../../context/boilerParts';
 import { useMediaQuery, useTheme } from '../../../hooks';
 import { CatalogFiltersMobileProps } from '../../../types';
-import { Accordion } from '../../elements';
+import { Accordion, Spinner } from '../../elements';
 import { FiltersPopup } from '../FiltersPopup';
 import { FiltersPopupTop } from '../FiltersPopupTop';
 import { PriceRange } from '../PriceRange';
@@ -149,7 +149,7 @@ export const CatalogFiltersMobile = memo((props: CatalogFiltersMobileProps) => {
           disabled={resetFilterBtnDisabled}
         >
           {spinner ? (
-            <span className="spinner" style={{ top: 6, left: '47%' }} />
+            <Spinner mode={mode} style={{ top: 6, left: '47%' }} />
           ) : (
             'Show'
           )}

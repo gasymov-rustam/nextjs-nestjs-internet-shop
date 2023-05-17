@@ -1,0 +1,1 @@
+export { CartItemCounter } from './CartItemCounter';

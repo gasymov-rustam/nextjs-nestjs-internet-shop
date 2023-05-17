@@ -17,3 +17,11 @@ export interface IAddToCartFx {
   username: string;
   partId: number;
 }
+
+export interface IUpdateCartItemFx {
+  url: string
+  payload: {
+    total_price?: number
+    count?: number
+  }
+}

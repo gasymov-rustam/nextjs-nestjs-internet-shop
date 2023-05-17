@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 import { Paths } from '../../../constants';
-import { useTheme } from '../../../hooks';
-import { formatPrice, removeItemFromCart } from '../../../utils';
-import { DeleteSvg } from '../../elements';
+import { usePrice, useTheme } from '../../../hooks';
+import { formatPrice } from '../../../utils';
+import { CartItemCounter, DeleteSvg, Spinner } from '../../elements';
 
 import type { IShoppingCartItem } from '../../../types';
 
@@ -16,12 +16,11 @@ interface CartPopupItemProps {
 }
 
 export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
-  const [spinner, setPinner] = useState(false);
   const { mode } = useTheme();
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
-  const spinnerDarkModeClass = { [cls.cart__dark_mode]: mode === 'dark' };
 
-  const deleteCartItem = () => removeItemFromCart(item.partId, setPinner);
+  const { price, spinner, decreasePrice, deleteCartItem, increasePrice } =
+    usePrice(item.count, item.partId, item.price);
 
   return (
     <li className={cls.cart__item}>
@@ -42,8 +41,8 @@ export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
         <button onClick={deleteCartItem}>
           <span>
             {spinner ? (
-              <span
-                className={clsx('spinner', spinnerDarkModeClass)}
+              <Spinner
+                mode={mode}
                 style={{ top: 0, left: 0, width: 20, height: 20 }}
               />
             ) : (
@@ -54,12 +53,20 @@ export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
       </div>
 
       <div className={cls.cart__item__bottom}>
-        {item.in_stock === 0 && (
+        {item.in_stock === 0 ? (
           <span className={cls.cart__item__empty}>Not in stock</span>
+        ) : (
+          <CartItemCounter
+            totalCount={item.in_stock}
+            partId={item.partId}
+            initialCount={item.count}
+            increasePrice={increasePrice}
+            decreasePrice={decreasePrice}
+          />
         )}
 
         <span className={clsx(cls.cart__item__price, darkModeClass)}>
-          {formatPrice(item.price)} P
+          {formatPrice(price)} $
         </span>
       </div>
     </li>
