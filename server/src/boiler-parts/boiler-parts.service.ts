@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { IBoilerPartsQuery } from './types';
-import { BoilerParts } from './BoilerParts.model';
 import { InjectModel } from '@nestjs/sequelize';
 import { Op } from 'sequelize';
+import { BoilerParts } from './BoilerParts.model';
+import { IBoilerPartsFilter, IBoilerPartsQuery } from './types';
 
-type IBoilerPartsFilter = {
+type IBoilerParts = {
   count: number;
   rows: BoilerParts[];
 };
@@ -18,39 +18,39 @@ export class BoilerPartsService {
 
   paginateAndFilter = async (
     query: IBoilerPartsQuery,
-  ): Promise<IBoilerPartsFilter> => {
+  ): Promise<IBoilerParts> => {
     const limit = +query.limit;
     const offset = +query.offset * 20;
-    // const filter = {} as Partial<IBoilerPartsFilter>;
+    const filter = {} as Partial<IBoilerPartsFilter>;
 
-    // if (query.priceFrom && query.priceTo) {
-    //   filter.price = {
-    //     [Op.between]: [+query.priceFrom, +query.priceTo],
-    //   };
-    // }
+    if (query.priceFrom && query.priceTo) {
+      filter.price = {
+        [Op.between]: [+query.priceFrom, +query.priceTo],
+      };
+    }
 
-    // if (query.boiler) {
-    //   filter.boiler_manufacturer = JSON.parse(decodeURIComponent(query.boiler));
-    // }
+    if (query.boiler) {
+      filter.boiler_manufacturer = JSON.parse(decodeURIComponent(query.boiler));
+    }
 
-    // if (query.parts) {
-    //   filter.parts_manufacturer = JSON.parse(decodeURIComponent(query.parts));
-    // }
+    if (query.parts) {
+      filter.parts_manufacturer = JSON.parse(decodeURIComponent(query.parts));
+    }
 
     return this.boilerPartsModel.findAndCountAll({
       limit,
       offset,
-      // where: filter,
+      where: filter,
     });
   };
 
-  bestsellers = async (): Promise<IBoilerPartsFilter> => {
+  bestsellers = async (): Promise<IBoilerParts> => {
     return this.boilerPartsModel.findAndCountAll({
       where: { bestseller: true },
     });
   };
 
-  new = async (): Promise<IBoilerPartsFilter> => {
+  new = async (): Promise<IBoilerParts> => {
     return this.boilerPartsModel.findAndCountAll({
       where: { new: true },
     });
@@ -68,7 +68,7 @@ export class BoilerPartsService {
     });
   };
 
-  searchByString = async (str: string): Promise<IBoilerPartsFilter> => {
+  searchByString = async (str: string): Promise<IBoilerParts> => {
     return this.boilerPartsModel.findAndCountAll({
       limit: 20,
       where: { name: { [Op.like]: `%${str}%` } },

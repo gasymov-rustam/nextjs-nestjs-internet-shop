@@ -83,7 +83,7 @@ export const CatalogFiltersMobile = memo((props: CatalogFiltersMobileProps) => {
 
         <div className={cls.filters__boiler_manufacturers}>
           <button
-            className={`${cls.filters__manufacturer__btn} ${darkModeClass}`}
+            className={clsx(cls.filters__manufacturer__btn, darkModeClass)}
             onClick={handleOpenBoilers}
           >
             Boiler manufacturer

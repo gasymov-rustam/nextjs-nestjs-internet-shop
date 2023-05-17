@@ -6,13 +6,15 @@ import { forwardRef, useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import { withClickOutside } from '../../../HOCs';
-import { Paths } from '../../../constants';
-import { $shoppingCart } from '../../../context/shoppingCart';
+import { Paths, RequestsPath } from '../../../constants';
+import { $shoppingCart, setShoppingCart } from '../../../context/shoppingCart';
 import { useTheme } from '../../../hooks';
 import { ShoppingCartSvg } from '../../elements';
 import { CartPopupItem } from '../CartPopupItem';
 
+import { getCartItemsFx } from '../../../app';
 import cls from './CartPopup.module.scss';
+import { $user } from '../../../context/user';
 
 interface CartPopupProps {
   open: boolean;
@@ -22,20 +24,22 @@ interface CartPopupProps {
 export const CartPopup = withClickOutside(
   forwardRef<HTMLDivElement, CartPopupProps>(({ open, setOpen }, ref) => {
     const { mode } = useTheme();
-    // const user = undefined;
+    const user = useStore($user);
     const shoppingCart = useStore($shoppingCart);
     const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
     const toggleCartDropDown = () => setOpen(!open);
 
     const loadCartItems = useCallback(async () => {
+      if (!user) return;
+
       try {
-        // const cartItems = await getCartItemsFx(`/shopping-cart/${user.userId}`);
-        // setShoppingCart(cartItems);
+        const cartItems = await getCartItemsFx(`${RequestsPath.BOILER_PARTS}/${user.userId}`);
+        setShoppingCart(cartItems);
       } catch (error) {
         toast.error((error as Error).message);
       }
-    }, []);
+    }, [user]);
 
     useEffect(() => {
       loadCartItems();

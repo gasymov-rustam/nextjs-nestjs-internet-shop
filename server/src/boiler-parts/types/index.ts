@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { Op } from 'sequelize';
 import { ApiProperty } from '@nestjs/swagger';
+import { Op } from 'sequelize';
 
 class BoilerParts {
   @ApiProperty({ example: 1 })

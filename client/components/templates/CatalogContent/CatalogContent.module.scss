@@ -609,6 +609,11 @@
           justify-content: center;
           cursor: pointer;
           color: #5e5e5e;
+
+          &:hover {
+            background-color: #1c629e;
+            color: #f2f2f2;
+          }
         }
       }
 

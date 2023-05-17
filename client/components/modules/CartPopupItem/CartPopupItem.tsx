@@ -19,7 +19,7 @@ export const CartPopupItem = memo(({ item }: CartPopupItemProps) => {
   const [spinner, setPinner] = useState(false);
   const { mode } = useTheme();
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
-  const spinnerDarkModeClass = mode === 'dark' ? cls.cart__dark_mode : '';
+  const spinnerDarkModeClass = { [cls.cart__dark_mode]: mode === 'dark' };
 
   const deleteCartItem = () => removeItemFromCart(item.partId, setPinner);
 
