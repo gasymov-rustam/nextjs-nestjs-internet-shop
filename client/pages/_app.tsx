@@ -1,8 +1,10 @@
 import { attachReduxDevTools } from '@effector/redux-devtools-adapter';
 import { withHydrate } from 'effector-next';
-import type { AppProps } from 'next/app';
+import NextProgress from 'nextjs-progressbar';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
+
+import type { AppProps } from 'next/app';
 
 import '@/styles/globals.scss';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <>
+      <NextProgress />
       <Component {...pageProps} />
       <ToastContainer
         position="bottom-right"
