@@ -7,40 +7,39 @@
   animation: colorSlide 15s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
 }
 
-.flexContainer .textCenter {
+.textCenter {
   text-align: center;
 }
 
-.flexContainer .textCenter h1,
-.flexContainer .textCenter h3 {
+.title,
+.fadeIn {
   margin: 10px;
   cursor: default;
 }
 
-.flexContainer .textCenter h1 .fadeIn,
-.flexContainer .textCenter h3 .fadeIn {
+.fadeIn {
   animation: fadeIn 2s ease infinite;
 }
 
-.flexContainer .textCenter h1 {
+.title {
   font-size: 8em;
   transition: font-size 200ms ease-in-out;
   border-bottom: 1px dashed white;
 }
 
-.flexContainer .textCenter h1 span#digit1 {
+#digit1 {
   animation-delay: 200ms;
 }
 
-.flexContainer .textCenter h1 span#digit2 {
+#digit2 {
   animation-delay: 300ms;
 }
 
-.flexContainer .textCenter h1 span#digit3 {
+#digit3 {
   animation-delay: 400ms;
 }
 
-.flexContainer .textCenter button {
+.btn {
   border: 1px solid white;
   background: transparent;
   outline: none;
@@ -53,7 +52,7 @@
   margin: 20px 0;
 }
 
-.flexContainer .textCenter button:hover {
+.btn:hover {
   background-color: white;
   color: #555;
   cursor: pointer;

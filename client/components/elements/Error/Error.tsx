@@ -7,8 +7,8 @@ import cls from './Error.module.scss';
 export const Error = memo(() => {
   return (
     <div className={cls.flexContainer}>
-      <div className={cls.flexContainer}>
-        <h1>
+      <div className={cls.textContainer}>
+        <h1 className={cls.title}>
           <span className={cls.fadeIn} id="digit1">
             4
           </span>
@@ -23,7 +23,7 @@ export const Error = memo(() => {
         <h3 className={cls.fadeIn}>PAGE NOT FOUND</h3>
 
         <Link href={Paths.DASHBOARD} passHref legacyBehavior>
-          <button type="button" name="button">
+          <button type="button" name="button" className={cls.btn}>
             Return To Home
           </button>
         </Link>

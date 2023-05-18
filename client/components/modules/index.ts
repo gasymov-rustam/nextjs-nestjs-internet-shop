@@ -20,6 +20,8 @@ export * from './HeaderTop';
 export * from './ManufacturersBlock';
 export * from './ManufacturersBlockItem';
 export * from './OnlineStoreContent';
+export * from './OrderAccordion';
+export * from './OrderItem';
 export * from './PartAccordion';
 export * from './PartImagesItem';
 export * from './PartImagesList';

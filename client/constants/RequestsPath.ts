@@ -1,6 +1,9 @@
 export const RequestsPath = {
+  PAYMENT_INFO: '/payment/info',
+  PAYMENT: '/payment',
   SHOPPING_CART: '/shopping-cart',
   SHOPPING_CART_COUNT: '/shopping-cart/count',
+  SHOPPING_CART_ALL: '/shopping-cart/all',
   SHOPPING_CART_TOTAL_PRICE: '/shopping-cart/total-price',
   REMOVE_ITEM_FROM_CART: '/shopping-cart/one/',
   ADD_TO_CART: '/shopping-cart/add',
