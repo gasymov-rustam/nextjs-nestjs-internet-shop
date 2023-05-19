@@ -7,6 +7,45 @@ import { MailSvg } from '../../elements';
 import { FeedbackForm } from '../../modules';
 import cls from './ContactsPage.module.scss';
 
+interface Contact {
+  id: number;
+  title: string;
+  value: string;
+}
+
+const contactsData: Contact[] = [
+  {
+    id: 1,
+    title: 'Office:',
+    value: ' Tel-Aviv, street Ben-Gurion, ap. 65',
+  },
+  {
+    id: 2,
+    title: 'Stock:',
+    value: ' Tel-Aviv, street Ben-Gurion, ap. 65',
+  },
+  {
+    id: 3,
+    title: 'Office schedule:',
+    value: ' Mo-Su: from 8:00 to 22:00',
+  },
+  {
+    id: 4,
+    title: 'Our contact phone number:',
+    value: ' +972 555-55-55',
+  },
+  {
+    id: 5,
+    title: 'Time of acceptance of bids:',
+    value: ' Mo-Su: from 8:00 to 22:00',
+  },
+  {
+    id: 6,
+    title: 'Accept orders electronically on the site:',
+    value: ' 24/7',
+  },
+];
+
 interface ContactsPageProps {
   isWholesaleBuyersPage?: boolean;
 }
@@ -48,41 +87,21 @@ export const ContactsPage = memo(
                   </h3>
                 </li>
 
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Office:</span>
-                  <span> Tel-Aviv, street Ben-Gurion, ap. 65</span>
-                </li>
-
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Stock:</span>
-                  <span> Tel-Aviv, street Ben-Gurion, ap. 65</span>
-                </li>
-
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Office schedule:</span>
-                  <span> Mo-Su: from 8:00 to 22:00</span>
-                </li>
-
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Our contact phone number:</span>
-                  <span> +972 555-55-55</span>
-                </li>
-
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Time of acceptance of bids:</span>
-                  <span> Mo-Su: from 8:00 to 22:00</span>
-                </li>
-
-                <li className={clsx(cls.contacts__list__item, darkModeClass)}>
-                  <span>Accept orders electronically on the site:</span>
-                  <span> 24/7</span>
-                </li>
+                {contactsData.map(({ id, title, value }) => (
+                  <li
+                    key={id}
+                    className={clsx(cls.contacts__list__item, darkModeClass)}
+                  >
+                    <span>{title}</span>
+                    <span>{value}</span>
+                  </li>
+                ))}
 
                 <li className={clsx(cls.contacts__list__item, darkModeClass)}>
                   <span>E-mail:</span>
 
                   <span className={cls.contacts__list__item__mail}>
-                    {!isMobile560 && <MailSvg />}{' '}
+                    {!isMobile560 && <MailSvg />}
                     <span>info@zapchasti.com.ru</span>
                   </span>
                 </li>
