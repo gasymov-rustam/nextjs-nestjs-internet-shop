@@ -328,7 +328,7 @@ export const CatalogContent = memo(({ query }: CatalogContentProps) => {
               darkModeClass
             )}
             breakLabel="..."
-            pageCount={pagesCount}
+            pageCount={isNaN(pagesCount) ? 1 : pagesCount}
             forcePage={currentPage}
             onPageChange={handlePageChange}
           />

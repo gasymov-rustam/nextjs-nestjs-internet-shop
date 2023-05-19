@@ -24,7 +24,7 @@ export function withClickOutside(
     useAddEventListener({
       type: 'mousedown',
       cb: (e: Event) => {
-        if (!ref.current.contains(e.target as HTMLDivElement)) {
+        if (!ref.current?.contains(e.target as HTMLDivElement)) {
           setOpen(false);
         }
       },

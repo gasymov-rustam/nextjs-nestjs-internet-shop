@@ -15,7 +15,7 @@ export const ContactsPage = memo(
   ({ isWholesaleBuyersPage = false }: ContactsPageProps) => {
     const isMobile560 = useMediaQuery(560);
     const { mode } = useTheme();
-    const darkModeClass = { [cls.mode]: mode === 'dark' };
+    const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
     return (
       <section className={cls.contacts}>

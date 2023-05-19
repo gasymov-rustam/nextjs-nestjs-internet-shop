@@ -7,7 +7,7 @@ import cls from './AboutPage.module.scss';
 
 export const AboutPage = memo(() => {
   const { mode } = useTheme();
-  const darkModeClass = { [cls.mode]: mode === 'dark' };
+  const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   return (
     <section className={cls.about}>
