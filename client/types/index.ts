@@ -19,6 +19,7 @@ export type {
   ManufacturersBlockProps,
   PriceRangeProps,
 } from './Catalog';
+export type { FeedbackFormProps, FeedbackInputs } from './FeedbackForm';
 export type { ICheckPayFx, IMakePayFx } from './Order';
 export type {
   IAddToCartFx,

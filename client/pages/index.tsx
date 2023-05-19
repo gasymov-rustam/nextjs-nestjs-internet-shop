@@ -4,7 +4,7 @@ import { useRedirectByUserCheck } from '../hooks';
 
 const Auth = () => {
   const shouldLoadContent = useRedirectByUserCheck(true);
-  console.log('🚀 => 👍 ==>> index ==>> Line #7 ==>> ', shouldLoadContent);
+
   return (
     <>
       <Head>

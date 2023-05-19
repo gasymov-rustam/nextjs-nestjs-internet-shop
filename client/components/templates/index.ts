@@ -1,5 +1,7 @@
+export * from './AboutPage';
 export * from './Auth';
 export * from './CatalogContent';
+export * from './ContactsPage';
 export * from './DashBoard';
 export * from './Footer';
 export * from './Header';
