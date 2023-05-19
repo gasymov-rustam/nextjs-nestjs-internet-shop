@@ -21,7 +21,7 @@ const initialState: IBoilerParts = {
 
 export const DashBoard = memo(() => {
   const shoppingCart = useStore($shoppingCart);
-  const [spinner, setSpinner] = useState(false);
+  const spinner = useStore(getBestsellersOrNewPartsFx.pending);
   const [newParts, setNewParts] = useState<IBoilerParts>(initialState);
   const [bestsellers, setBestsellers] = useState<IBoilerParts>(initialState);
   const [showAlert, setShowAlert] = useState(!!shoppingCart.length);
@@ -33,7 +33,6 @@ export const DashBoard = memo(() => {
 
   const loadBoilerParts = useCallback(async () => {
     try {
-      setSpinner(true);
       const bestsellers = await getBestsellersOrNewPartsFx(
         RequestsPath.BOILER_PARTS_BESTSELLERS
       );
@@ -46,7 +45,6 @@ export const DashBoard = memo(() => {
     } catch (error) {
       toast.error((error as Error).message);
     } finally {
-      setSpinner(false);
     }
   }, []);
 

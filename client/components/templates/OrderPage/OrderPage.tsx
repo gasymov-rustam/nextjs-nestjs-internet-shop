@@ -67,7 +67,7 @@ export const OrderPage = memo(() => {
       sessionStorage.removeItem('paymentId');
     } catch (error) {
       console.log((error as Error).message);
-      resetCart();
+      sessionStorage.removeItem('paymentId');
     }
   };
 

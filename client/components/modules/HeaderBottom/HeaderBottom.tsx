@@ -1,18 +1,25 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 
 import { Paths } from '../../../constants';
 import { useMediaQuery, useTheme } from '../../../hooks';
 import { ModeToggler, SearchInput, SearchSvg } from '../../elements';
 import { CartPopup } from '../CartPopup';
 
+import { useRouter } from 'next/router';
+import { setDisableCart } from '../../../context/shoppingCart';
 import cls from './HeaderBottom.module.scss';
 
 export const HeaderBottom = memo(() => {
   const isMedia950 = useMediaQuery(950);
   const { mode } = useTheme();
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
+  const router = useRouter();
+
+  useEffect(() => {
+    setDisableCart(router.pathname === Paths.ORDER);
+  }, [router.pathname]);
 
   return (
     <div className={cls.header__bottom}>

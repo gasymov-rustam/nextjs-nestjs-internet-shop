@@ -9,6 +9,7 @@ import { withClickOutside } from '../../../HOCs';
 import { getCartItemsFx } from '../../../app';
 import { Paths, RequestsPath } from '../../../constants';
 import {
+  $disableCart,
   $shoppingCart,
   $totalPrice,
   setShoppingCart,
@@ -32,6 +33,7 @@ export const CartPopup = withClickOutside(
     const { mode } = useTheme();
     const user = useStore($user);
     const totalPrice = useStore($totalPrice);
+    const disabledCart = useStore($disableCart);
     const shoppingCart = useStore($shoppingCart);
     const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
@@ -65,19 +67,33 @@ export const CartPopup = withClickOutside(
 
     return (
       <div className={cls.cart} ref={ref}>
-        <button
-          className={clsx(cls.cart__btn, darkModeClass)}
-          onClick={toggleCartDropDown}
-        >
-          {!!shoppingCart.length && (
-            <span className={cls.cart__btn__count}>{shoppingCart.length}</span>
-          )}
+        {disabledCart ? (
+          <button
+            className={clsx(cls.cart__btn, darkModeClass)}
+            style={{ cursor: 'auto' }}
+          >
+            <span className={cls.cart__svg}>
+              <ShoppingCartSvg />
+            </span>
+            <span className={cls.cart__text}>Cart</span>
+          </button>
+        ) : (
+          <button
+            className={clsx(cls.cart__btn, darkModeClass)}
+            onClick={toggleCartDropDown}
+          >
+            {!!shoppingCart.length && (
+              <span className={cls.cart__btn__count}>
+                {shoppingCart.length}
+              </span>
+            )}
 
-          <span className={cls.cart__svg}>
-            <ShoppingCartSvg />
-          </span>
-          <span className={cls.cart__text}>Cart</span>
-        </button>
+            <span className={cls.cart__svg}>
+              <ShoppingCartSvg />
+            </span>
+            <span className={cls.cart__text}>Cart</span>
+          </button>
+        )}
 
         <AnimatePresence>
           {open && (

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { singInFx } from '../../../../app';
@@ -11,10 +11,11 @@ import { NameInput, PasswordInput, Spinner } from '../../../elements';
 
 import type { IInputs } from '../../../../types';
 
+import { useStore } from 'effector-react';
 import cls from '../SignInForm.module.scss';
 
 export const SignInForm = memo(() => {
-  const [spinner, setSpinner] = useState(false);
+  const spinner = useStore(singInFx.pending);
   const {
     register,
     formState: { errors, isValid, isDirty },
@@ -29,7 +30,6 @@ export const SignInForm = memo(() => {
 
   const onSubmit = async (data: IInputs) => {
     try {
-      setSpinner(true);
       await singInFx({
         url: RequestsPath.LOGIN,
         username: data.name,
@@ -40,8 +40,6 @@ export const SignInForm = memo(() => {
       route.push(Paths.DASHBOARD);
     } catch (error) {
       showAuthError(error);
-    } finally {
-      setSpinner(false);
     }
   };
 

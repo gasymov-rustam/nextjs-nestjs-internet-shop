@@ -19,7 +19,7 @@ interface OrderAccordionProps {
 
 export const OrderAccordion = memo(
   ({ showDoneIcon, setOrderIsReady }: OrderAccordionProps) => {
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
     const shoppingCart = useStore($shoppingCart);
     const totalPrice = useStore($totalPrice);
     const isMedia550 = useMediaQuery(550);

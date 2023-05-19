@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 
 import { useStore } from 'effector-react';
 import { Paths } from '../../../constants';
@@ -13,18 +13,19 @@ import { CartHoverCheckedSvg, CartHoverSvg, Spinner } from '../../elements';
 import type { IBoilerPart } from '../../../types';
 
 import cls from '@/components/templates/CatalogContent/CatalogContent.module.scss';
+import { removeFromCartFx } from '../../../app';
 
 export const CatalogItem = memo(({ item }: { item: IBoilerPart }) => {
   const { mode } = useTheme();
   const user = useStore($user);
-  const [spinner, setSpinner] = useState(false);
+  const spinner = useStore(removeFromCartFx.pending);
   const shoppingCart = useStore($shoppingCart);
   const isInCart = shoppingCart.some((cartItem) => cartItem.partId === item.id);
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
   const toggleToCart = () => {
     if (user) {
-      toggleCartItem(user.username, item.id, isInCart, setSpinner);
+      toggleCartItem(user.username, item.id, isInCart);
     }
   };
 
