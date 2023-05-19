@@ -5,7 +5,6 @@ export const Paths = {
   WHOLESALE_BUYERS: '/wholesale-buyers',
   DASHBOARD: '/dashboard',
   SHIPPING_PAYMENT: '/shipping-payment',
-  SHOPPING_PAYMENT: '/shopping-payment',
   CATALOG: '/catalog',
   ORDER: '/order',
 } as const;

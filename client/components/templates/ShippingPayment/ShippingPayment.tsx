@@ -7,40 +7,42 @@ import { motion } from 'framer-motion';
 import cls from './ShippingPayment.module.scss';
 import { tab1Text, tab2Text, tab3Text, tab4Text } from './mockData';
 
+interface Tab {
+  id: number;
+  title: string;
+  description: string;
+}
+
+const mockTabs: Tab[] = [
+  {
+    id: 1,
+    title: 'How does courier delivery work?',
+    description: tab1Text,
+  },
+  {
+    id: 2,
+    title: 'How do I get the goods from the pickup point?',
+    description: tab2Text,
+  },
+  {
+    id: 3,
+    title: 'What are the payment methods?',
+    description: tab3Text,
+  },
+  {
+    id: 4,
+    title: 'What are the payment methods?',
+    description: tab4Text,
+  },
+];
+
 export const ShippingPayment = memo(() => {
-  const [tab1, setTab1] = useState(true);
-  const [tab2, setTab2] = useState(false);
-  const [tab3, setTab3] = useState(false);
-  const [tab4, setTab4] = useState(false);
+  const [tab, setTab] = useState<Tab>(mockTabs[0]);
   const { mode } = useTheme();
   const darkModeClass = { [cls.dark_mode]: mode === 'dark' };
 
-  const handleTab1 = () => {
-    setTab1(true);
-    setTab2(false);
-    setTab3(false);
-    setTab4(false);
-  };
-
-  const handleTab2 = () => {
-    setTab1(false);
-    setTab2(true);
-    setTab3(false);
-    setTab4(false);
-  };
-
-  const handleTab3 = () => {
-    setTab1(false);
-    setTab2(false);
-    setTab3(true);
-    setTab4(false);
-  };
-
-  const handleTab4 = () => {
-    setTab1(false);
-    setTab2(false);
-    setTab3(false);
-    setTab4(true);
+  const handleChange = (tab: Tab) => () => {
+    setTab(tab);
   };
 
   return (
@@ -52,101 +54,36 @@ export const ShippingPayment = memo(() => {
 
         <div className={clsx(cls.shipping_payment__tabs, darkModeClass)}>
           <ul className={cls.shipping_payment__tabs__controls}>
-            <li
-              className={clsx(
-                cls.shipping_payment__tabs__controls__item,
-                { [cls.active]: tab1 },
-                darkModeClass
-              )}
-            >
-              <button className={clsx(darkModeClass)} onClick={handleTab1}>
-                How does courier delivery work?
-              </button>
-            </li>
-
-            <li
-              className={clsx(
-                cls.shipping_payment__tabs__controls__item,
-                { [cls.active]: tab2 },
-                darkModeClass
-              )}
-            >
-              <button className={clsx(darkModeClass)} onClick={handleTab2}>
-                How do I get the goods from the pickup point?
-              </button>
-            </li>
-
-            <li
-              className={clsx(
-                cls.shipping_payment__tabs__controls__item,
-                { [cls.active]: tab3 },
-                darkModeClass
-              )}
-            >
-              <button className={clsx(darkModeClass)} onClick={handleTab3}>
-                What are the payment methods?
-              </button>
-            </li>
-
-            <li
-              className={clsx(
-                cls.shipping_payment__tabs__controls__item,
-                { [cls.active]: tab4 },
-                darkModeClass
-              )}
-            >
-              <button className={clsx(darkModeClass)} onClick={handleTab4}>
-                How do I know the status of my order?
-              </button>
-            </li>
+            {mockTabs.map((item) => (
+              <li
+                key={item.id}
+                className={clsx(
+                  cls.shipping_payment__tabs__controls__item,
+                  { [cls.active]: tab.id === item.id },
+                  darkModeClass
+                )}
+              >
+                <button
+                  className={clsx(darkModeClass)}
+                  onClick={handleChange(item)}
+                >
+                  {item.title}
+                </button>
+              </li>
+            ))}
           </ul>
 
           <div
             className={`${cls.shipping_payment__tabs__content} ${darkModeClass}`}
           >
-            {tab1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={cls.shipping_payment__tabs__content__text}
-              >
-                {tab1Text}
-              </motion.div>
-            )}
-
-            {tab2 && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={cls.shipping_payment__tabs__content__text}
-              >
-                {tab2Text}
-              </motion.p>
-            )}
-
-            {tab3 && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={cls.shipping_payment__tabs__content__text}
-              >
-                {tab3Text}
-              </motion.p>
-            )}
-
-            {tab4 && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={cls.shipping_payment__tabs__content__text}
-              >
-                {tab4Text}
-              </motion.p>
-            )}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={cls.shipping_payment__tabs__content__text}
+            >
+              {tab.description}
+            </motion.p>
           </div>
         </div>
       </div>

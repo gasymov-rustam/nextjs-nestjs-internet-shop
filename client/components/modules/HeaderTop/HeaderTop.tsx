@@ -29,7 +29,7 @@ export const HeaderTop = memo(() => {
         >
           <ul className={cls.header__nav__list}>
             <li className={cls.header__nav__list__item}>
-              <Link href={Paths.SHOPPING_PAYMENT} passHref legacyBehavior>
+              <Link href={Paths.SHIPPING_PAYMENT} passHref legacyBehavior>
                 <a
                   className={clsx(
                     cls.header__nav__list__item__link,
