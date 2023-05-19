@@ -6,6 +6,7 @@ export {
   getPartByNameFx,
   searchPartsFx,
 } from './api/boilerPart';
+export { getGeolocationFx } from './api/geolocation';
 export { checkPaymentFx, makePaymentFx } from './api/payment';
 export {
   addToCartFx,

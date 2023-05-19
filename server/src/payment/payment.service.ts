@@ -44,7 +44,7 @@ export class PaymentService {
             type: 'redirect',
             return_url: 'http://localhost:3001/order',
           },
-          description: 'Заказ №1',
+          description: makePaymentDto.description,
         },
       });
 

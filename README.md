@@ -18,4 +18,7 @@ $ npx sequelize-cli seed:generate --name <name of model, example:demo-user>
 
 # add initialize data
 $ npx sequelize-cli db:seed:all
+
+# geo position
+GeoApi: https://clck.ru/ejmHB
 ```
