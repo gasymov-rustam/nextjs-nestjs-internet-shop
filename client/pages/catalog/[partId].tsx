@@ -1,10 +1,11 @@
 import { useStore } from 'effector-react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { getBoilerPartsFx } from '../../app';
 import { Layout } from '../../components/layout';
+import { Breadcrumbs } from '../../components/modules';
 import { PartPage } from '../../components/templates';
 import { RequestsPath } from '../../constants';
 import { $boilerPart, setBoilerPart } from '../../context/boilerPart';
@@ -18,11 +19,11 @@ const CatalogPartPage = ({ query }: { query: IQueryParams }) => {
   const [error, setError] = useState(false);
   const router = useRouter();
 
-  // const getDefaultTextGenerator = useCallback(
-  //   (subpath: string) => subpath.replace('catalog', 'Catalog'),
-  //   []
-  // );
-  // const getTextGenerator = useCallback((param: string) => ({}[param]), []);
+  const getDefaultTextGenerator = useCallback(
+    (subpath: string) => subpath.replace('catalog', 'Catalog'),
+    []
+  );
+  const getTextGenerator = useCallback((param: string) => ({}[param]), []);
   const lastCrumb = document.querySelector('.last-crumb') as HTMLElement;
 
   useEffect(() => {
@@ -62,9 +63,11 @@ const CatalogPartPage = ({ query }: { query: IQueryParams }) => {
             title={shouldLoadContent ? boilerPart.name : ''}
             shouldBeOverlay
           >
-            <main>
-              <PartPage />
-            </main>
+            <Breadcrumbs
+              getDefaultTextGenerator={getDefaultTextGenerator}
+              getTextGenerator={getTextGenerator}
+            />
+            <PartPage />
           </Layout>
         )
       )}

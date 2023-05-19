@@ -1,5 +1,6 @@
 export * from './Auth';
 export * from './BrandSlider';
+export * from './Breadcrumbs';
 export * from './CartAlert';
 export * from './CartPopup';
 export * from './CartPopupItem';

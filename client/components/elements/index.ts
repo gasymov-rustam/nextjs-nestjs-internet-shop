@@ -8,6 +8,7 @@ export * from './CartHoverCheckedSvg';
 export * from './CartHoverSvg';
 export * from './CartItemCounter';
 export * from './CityButton';
+export * from './CrumbArrowSvg';
 export * from './DeleteSvg';
 export * from './DoneSvg';
 export * from './EditSvg';
