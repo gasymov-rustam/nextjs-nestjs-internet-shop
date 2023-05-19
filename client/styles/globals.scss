@@ -72,6 +72,12 @@ a {
   z-index: 10;
 }
 
+.overlay.open-search {
+  visibility: visible;
+  opacity: 1;
+  z-index: 12;
+}
+
 .slick-slide {
   margin: 0 8px;
 }

@@ -1,0 +1,1 @@
+export { removeClassNamesForOverlayAndBody } from './removeClassNamesForOverlayAndBody';

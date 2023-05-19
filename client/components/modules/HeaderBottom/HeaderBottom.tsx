@@ -1,14 +1,14 @@
 import clsx from 'clsx';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { memo, useEffect } from 'react';
 
 import { Paths } from '../../../constants';
+import { setDisableCart } from '../../../context/shoppingCart';
 import { useMediaQuery, useTheme } from '../../../hooks';
-import { ModeToggler, SearchInput, SearchSvg } from '../../elements';
+import { ModeToggler, SearchInput } from '../../elements';
 import { CartPopup } from '../CartPopup';
 
-import { useRouter } from 'next/router';
-import { setDisableCart } from '../../../context/shoppingCart';
 import cls from './HeaderBottom.module.scss';
 
 export const HeaderBottom = memo(() => {
@@ -37,14 +37,9 @@ export const HeaderBottom = memo(() => {
             </a>
           </Link>
         </h1>
+
         <div className={cls.header__search}>
           <SearchInput />
-
-          <button className={clsx(darkModeClass, cls.header__search__btn)}>
-            <span className={cls.header__search__btn__span}>
-              <SearchSvg />
-            </span>
-          </button>
         </div>
 
         <div className={cls.header__shopping_cart}>

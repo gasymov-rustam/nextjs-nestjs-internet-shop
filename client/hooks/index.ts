@@ -1,4 +1,5 @@
 export * from './useAddEventListener';
+export * from './useDebounce';
 export * from './useLatest';
 export * from './useMediaQuery';
 export * from './usePopup';

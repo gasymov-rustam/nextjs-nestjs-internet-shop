@@ -24,6 +24,7 @@ export * from './PlusSvg';
 export * from './ProfileSvg';
 export * from './SearchInput';
 export * from './SearchSvg';
+export * from './SelectOptionsMessage';
 export * from './ShoppingCartSvg';
 export * from './Skeleton';
 export * from './Spinner';

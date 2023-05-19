@@ -1,4 +1,8 @@
 import { useCallback, useState } from 'react';
+import {
+  removeClassNamesForOverlayAndBody,
+  toggleClassNamesForOverlayAndBody,
+} from '../../utils';
 import { useAddEventListener } from '../useAddEventListener';
 
 export const usePopup = () => {
@@ -6,17 +10,16 @@ export const usePopup = () => {
 
   const toggleOpen = useCallback(() => {
     window.scrollTo(0, 0);
-    document.querySelector('.overlay')?.classList.toggle('open');
-    document.querySelector('.body')?.classList.toggle('overflow-hidden');
+    toggleClassNamesForOverlayAndBody();
 
     setOpen((prev) => !prev);
   }, []);
 
   const closePopup = useCallback(() => {
-    document.querySelector('.overlay')?.classList.remove('open');
-    document.querySelector('.body')?.classList.remove('overflow-hidden');
+    removeClassNamesForOverlayAndBody();
 
     setOpen(false);
+    // setSearchInputZIndex(1);
   }, []);
 
   useAddEventListener({
